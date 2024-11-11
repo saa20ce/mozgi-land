@@ -14,7 +14,7 @@ const Hero = () => {
           </div>
         </div>
         <div className="md:w-1/2 mt-8 md:mt-0">
-          <img src="../public/images/Man.png" alt="3D Human" className="w-full h-auto"/>
+          <img src="/images/Man.png" alt="3D Human" className="w-full h-auto"/>
         </div>
       </section>
     );
