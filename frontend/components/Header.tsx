@@ -12,7 +12,7 @@ const Header = () => {
           {/* Дополнительные ссылки навигации можно добавить здесь */}
         </nav>
       </div>
-      <div className="p-2 rounded-full bg-light-blue">
+      <div className="p-2 rounded-full">
         🌐
       </div>
     </header>

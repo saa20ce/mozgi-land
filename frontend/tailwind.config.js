@@ -8,8 +8,9 @@ module.exports = {
     extend: {
       colors: {
         'dark-blue': '#1C1F26', // фон страницы
-        'light-blue': '#3C4A6B', // фон кнопки "О нас"
+        'light-blue': '#344F73', // фон кнопки "О нас"
         'light-red': '#FF6B6B', // фон кнопки "Получить консультацию"
+        'navy-blue': '#232C3F',
       },
     },
   },

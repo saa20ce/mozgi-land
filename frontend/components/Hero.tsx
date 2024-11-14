@@ -6,7 +6,7 @@ const Hero = () => {
           <p className="text-lg">
             Современная веб-студия, занимающаяся разработкой продающих сайтов и дизайнов социальных сетей.
           </p>
-          <div className="flex flex-col space-y-4 md:space-y-0 md:space-x-4 md:flex-row">
+          <div className="flex flex-col gap-y-4 space-y-4 md:space-y-0 md:flex-col">
             <button className="px-6 py-3 bg-light-red text-white rounded-full">Получить консультацию</button>
             <button className="px-6 py-3 bg-dark-blue text-white rounded-full border border-white">Наши услуги</button>
             <button className="px-6 py-3 bg-dark-blue text-white rounded-full border border-white">Наши работы</button>
