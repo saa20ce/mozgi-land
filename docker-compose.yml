@@ -9,6 +9,8 @@ services:
       - "3000:3000"
     volumes:
       - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
     depends_on:
       - mongo
     links:
@@ -16,7 +18,7 @@ services:
     environment:
       - MONGO_URI=mongodb://mongo:27017/mydb
       - NODE_ENV=development
-    command: yarn dev
+    command: ["yarn", "run", "dev"]
 
   mongo:
     image: mongo:8.0.1

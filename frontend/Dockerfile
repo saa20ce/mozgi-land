@@ -4,4 +4,4 @@ COPY package.json yarn.lock ./
 RUN yarn install
 COPY . .
 EXPOSE 3000
-CMD ["yarn", "dev"]  # Запуск в режиме разработки
+CMD ["sh", "-c", "yarn dev && tail -f /dev/null"]
