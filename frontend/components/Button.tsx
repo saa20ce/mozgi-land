@@ -1,7 +1,7 @@
 type ButtonProps = {
     label: string;
     onClick: () => void;
-    className?: string; // дополнительный класс для стилизации
+    className?: string; 
   };
   
   const Button = ({ label, onClick, className = '' }: ButtonProps) => {
