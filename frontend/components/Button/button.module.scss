@@ -1,0 +1,26 @@
+.button {
+    max-width: fit-content;
+    padding: var(--padding-large);
+    border-radius: var(--border-radius);
+    border: none;
+    text-transform: uppercase;
+    background-color: var(--dark-blue);
+    color: white;
+  
+    &:hover {
+      cursor: pointer;
+      opacity: 0.9;
+    }
+  }
+  
+  .active {
+    opacity: 0.8;
+    background-color: var(--red);
+    box-shadow: 0 0 4px 2px var(--light-blue);
+  }
+  
+  .disabled {
+    background-color: var(--dark-blue);
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
