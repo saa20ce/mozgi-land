@@ -1,16 +1,28 @@
+import styles from './button.module.scss'
+import clsx from "clsx";
+
 type ButtonProps = {
-    label: string;
-    onClick: () => void;
-    className?: string; 
+    text: string;
+    active?: boolean;
+    disabled?: boolean;
+    href?: string;
+    onClick?: () => void;
   };
   
-  const Button = ({ label, onClick, className = '' }: ButtonProps) => {
+  const Button = ({ text, active, disabled, onClick}: ButtonProps) => {
+    const classNames = clsx(
+      styles.button,
+      { [styles.active]: active },
+      { [styles.disabled]: disabled }
+    );
+    
     return (
       <button
-        className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${className}`}
+        className={classNames}
         onClick={onClick}
+        disabled={disabled}
       >
-        {label}
+        {text}
       </button>
     );
   };
