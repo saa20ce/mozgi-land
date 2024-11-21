@@ -7,9 +7,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'dark-blue': '#1C1F26', // фон страницы
-        'light-blue': '#344F73', // фон кнопки "О нас"
-        'light-red': '#FF6B6B', // фон кнопки "Получить консультацию"
+        'dark-blue': '#1C1F26',
+        'light-blue': '#344F73',
+        'light-red': '#FF6B6B',
         'navy-blue': '#232C3F',
       },
     },
