@@ -9,7 +9,7 @@ class MyDocument extends Document {
           {/* Добавьте метатеги и шрифты, если нужно */}
         </Head>
         <body>
-          <Main />
+          <Main/>
           <NextScript />
         </body>
       </Html>

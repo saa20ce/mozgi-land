@@ -1,26 +1,28 @@
 .button {
-    max-width: fit-content;
+    width: 455px;
+    height: 58px;
     padding: var(--padding-large);
-    border-radius: var(--border-radius);
+    border-radius: 24px;
     border: none;
-    text-transform: uppercase;
-    background-color: var(--dark-blue);
+    background-color: var(--button);
     color: white;
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 600;
   
     &:hover {
       cursor: pointer;
-      opacity: 0.9;
+      background-color: var(--button-hover);
     }
   }
   
   .active {
     opacity: 0.8;
     background-color: var(--red);
-    box-shadow: 0 0 4px 2px var(--light-blue);
   }
   
   .disabled {
-    background-color: var(--dark-blue);
+    background-color: var(--button);
     opacity: 0.5;
     cursor: not-allowed;
   }

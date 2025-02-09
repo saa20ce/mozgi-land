@@ -1,5 +1,14 @@
-const About = () => {
-    return <h1>About Us</h1>;
-  };
-  
-  export default About;
+import Layout from '@/components/Layout/Layout';
+import Text from '@/components/Text/Text';
+import MainMenu from '@/components/MainMenu/MainMenu';
+
+export default function Home() {
+
+  return (
+    <Layout>
+      <div className="flex flex-col md:flex-row items-center gap-8 h-[80vh] w-full max-h-[784px] bg-[#344F73] mt-[36px] pb-[26px] rounded-[24px]">
+
+      </div>
+    </Layout>
+  );
+}
