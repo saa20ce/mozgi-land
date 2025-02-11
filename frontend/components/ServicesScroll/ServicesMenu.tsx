@@ -1,0 +1,97 @@
+import { useState } from "react";
+import Button from "@/components/Button/Button";
+import { FaCog } from "react-icons/fa";
+import Text from "../Text/Text";
+
+const services = [
+  {
+    title: "Создание сайта",
+    categories: ["Корпоративные", "Интернет-магазины", "Лендинги и порталы"],
+  },
+  {
+    title: "Создание сайта",
+    categories: ["Корпоративные", "Интернет-магазины", "Лендинги и порталы"],
+  },
+  {
+    title: "Создание сайта",
+    categories: ["Корпоративные", "Интернет-магазины", "Лендинги и порталы"],
+  },
+];
+
+export default function ServicesMenu() {
+  const [selected, setSelected] = useState<number | null>(null);
+
+  return (
+    <div className="w-full md:w-1/2 mt-8 md:mt-0 bg-[#344F73] min-h-[50vh] rounded-[24px] p-4">
+      <div className="flex flex-col gap-4">
+        {services.map((service, index) => (
+          <div
+            key={index}
+            className="p-4 bg-[rgba(255,255,255,0.26)] text-white rounded-xl flex flex-col md:flex-row md:items-center gap-4"
+          >
+            <div className="flex-1">
+              <Text
+                as="h2"
+                size="lg"
+                weight="semibold"
+                className="text-lg font-semibold flex items-center gap-2"
+              >
+                <FaCog className="text-white text-2xl" />
+                {service.title}
+              </Text>
+              <ul className="text-sm text-gray-300 mt-1 ml-2 space-y-1">
+                {service.categories.map((category, i) => (
+                  <li key={i} className="list-inside list-disc">
+                    <Text as="span" size="sm" color="white">
+                      {category}
+                    </Text>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <Button
+              text="Открыть"
+              active={selected === index}
+              onClick={() => setSelected(index)}
+              type="card"
+              className="left-[5px] top-[25px]"
+            />
+          </div>
+        ))}
+      </div>
+
+      <div className="text-gray-400 text-sm text-center mt-6">
+        <Text as="p" color="white" size="lg" weight="medium">
+          Технологии которые мы используем:
+        </Text>
+        <div className="flex gap-4 flex-wrap justify-center mt-2">
+          {[
+            { name: "Go", src: "/images/gologo.svg" },
+            { name: "PHP", src: "/images/phplogo.svg" },
+            { name: "Csharp", src: "/images/csharplogo.svg" },
+            { name: "JS", src: "/images/jslogo.svg" },
+            { name: "TS", src: "/images/tslogo.svg" },
+            { name: "Python", src: "/images/pylogo.svg" },
+          ].map((tech, i) => (
+            <div
+              key={i}
+              className={`flex items-center justify-center rounded-lg p-2 ${
+                tech.name === "PHP" ? "w-20 h-19" : "w-16 h-16"
+              }`}
+            >
+              <img
+                src={tech.src}
+                alt={tech.name}
+                className={`object-contain ${
+                  tech.name === "Go"
+                    ? "scale-150 translate-x-[-4px]"
+                    : "w-[100%] h-[90%]"
+                }`}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
