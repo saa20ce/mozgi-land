@@ -39,3 +39,25 @@
     background-color: rgba(255, 255, 255, 0.18);
   }
 }
+
+.porfoliobutton {
+  width: 164px;
+  height: 40px;
+  font-size: 20px;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.26);
+  
+  display: flex;  
+  align-items: center; 
+  justify-content: center; 
+  text-align: center; 
+  
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.18);
+  }
+  &.active {
+    background-color: rgba(255, 255, 255, 0.18);
+    color: white;
+  }
+}

@@ -9,9 +9,6 @@ export default function Home() {
         <div className="md:w-1/2 space-y-6">
           <MainMenu />
         </div>
-        {/* <div className="md:w-1/2 mt-8 md:mt-0 bg-[#344F73] min-h-[50vh] rounded-[24px]">
-            
-          </div> */}
         <QuestionMenu />
       </div>
     </Layout>
