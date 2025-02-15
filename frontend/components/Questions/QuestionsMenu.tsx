@@ -43,8 +43,8 @@ export default function QuestionMenu() {
     setOpenIndex(openIndex === index ? null : index);
   };
   return (
-    <div className="w-full md:w-1/2 mt-8 md:mt-0 bg-[#344F73] min-h-[50vh] rounded-[24px] p-4">
-      <div className="flex flex-col gap-2">
+    <div className="md:w-1/2 mt-8 md:mt-0 bg-[#344F73] rounded-[24px] h-auto p-4">
+      <div className="flex flex-col pr-3 overflow-auto lg:h-60 2xl:h-full gap-2">
         {questions.map((item, index) => (
           <div key={index} className="bg-[rgba(255,255,255,0.2)] rounded-lg">
             <button

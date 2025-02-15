@@ -43,7 +43,7 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <div className="w-full flex flex-col overflow-auto rounded-[24px] p-6 mt-2 ">
+    <div className="w-full flex flex-col rounded-[24px] p-6">
 
       <div className="flex justify-center gap-6 mb-8">
         <Button
@@ -68,7 +68,7 @@ export default function Portfolio() {
       </div>
 
       
-      <div className="flex-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-18 overflow-y-auto max-h-[calc(100vh-200px)] custom-scroll">
+      <div className="flex-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pb-18 overflow-y-auto lg:max-h-[calc(50vh)] xl:max-h-[calc(60vh)] 2xl:max-h-[calc(65vh)] custom-scroll pl-3 pr-3">
         {filteredProjects.map((project) => (
           <div
             key={project.id}

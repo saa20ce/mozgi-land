@@ -16,14 +16,18 @@ const services = [
     title: "Создание сайта",
     categories: ["Корпоративные", "Интернет-магазины", "Лендинги и порталы"],
   },
+  {
+    title: "Создание сайта",
+    categories: ["Корпоративные", "Интернет-магазины", "Лендинги и порталы"],
+  },
 ];
 
 export default function ServicesMenu() {
   const [selected, setSelected] = useState<number | null>(null);
 
   return (
-    <div className="w-full md:w-1/2 mt-8 md:mt-0 bg-[#344F73] min-h-[50vh] rounded-[24px] p-4">
-      <div className="flex flex-col gap-4">
+    <div className="w-full md:w-1/2 mt-8 md:mt-0 bg-[#344F73] h-auto rounded-[24px] p-4">
+      <div className="flex flex-col gap-4 custom-scroll overflow-auto lg:h-[160px] xl:h-60 2xl:h-96 pr-3">
         {services.map((service, index) => (
           <div
             key={index}

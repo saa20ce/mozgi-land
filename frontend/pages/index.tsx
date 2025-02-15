@@ -6,8 +6,8 @@ export default function Home() {
 
   return (
     <Layout>
-      <div className="flex flex-col justify-end md:flex-row items-center gap-8 h-full w-full">
-        <div className="w-[460px]  ml-[] space-y-6 z-10">
+      <div className="flex flex-col justify-end md:flex-row items-center gap-8 h-full w-full ">
+        <div className="w-[460px] space-y-6 z-10">
           {/* <Text as='h1' className='text-4xl font-bold'>
             Разработка и дизайн
           </Text> */}
