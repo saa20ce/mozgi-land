@@ -13,7 +13,6 @@ const Header = () => {
           <Link href="/about" className="px-4 py-2 bg-[#FFFFFF42] text-white rounded-full">
             О нас
           </Link>
-          {/* Дополнительные ссылки навигации можно добавить здесь */}
         </nav>
       </div>
       <div className="rounded-full">

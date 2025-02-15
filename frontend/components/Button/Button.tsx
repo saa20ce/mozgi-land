@@ -7,16 +7,18 @@ type ButtonProps = {
     disabled?: boolean;
     href?: string;
     className?:string;
-    type?: "default" | "card"; 
+    type?: "default" | "card" | "portfolio"; 
     onClick?: () => void;
   };
   
   const Button = ({ text, active,className, disabled,type="default",onClick,}: ButtonProps) => {
     const classNames = clsx(
       styles.button,
+      styles[type],
       { [styles.active]: active },
       { [styles.disabled]: disabled },
       { [styles.buttoncard]: type === "card" },
+      {[styles.porfoliobutton]: type === "portfolio"},
       className,
       
       
