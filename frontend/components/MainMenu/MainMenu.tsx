@@ -2,7 +2,7 @@ import Button from "../Button/Button";
 import Text from "../Text/Text";
 const MainMenu = () => {
   return (
-    <div className="flex flex-col gap-y-4 space-y-4 md:space-y-0 md:flex-col">
+    <div className="flex hidden md:block flex-col gap-y-4 space-y-4 md:space-y-0 md:flex-col">
       <Text as="a" href="/">
         <Button
           text="Получить консультацию"
