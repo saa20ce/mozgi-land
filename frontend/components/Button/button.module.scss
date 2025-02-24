@@ -61,3 +61,20 @@
     color: white;
   }
 }
+
+.mobilemenubutton{
+  width: 235px;
+  height: 45px;
+  font-size: 16px;
+  background-color:rgba(52, 79, 115, 0.26) ;
+
+  display: flex;  
+  align-items: center; 
+  justify-content: center; 
+  text-align: center;
+  
+  &.active {
+    background-color: var(--red);
+
+  }
+}
