@@ -1,67 +1,80 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Button from "@/components/Button/Button";
 import { FaCog } from "react-icons/fa";
 import Text from "../Text/Text";
+import { getServices } from "@/lib/api";
 
-const services = [
-  {
-    title: "Создание сайта",
-    categories: ["Корпоративные", "Интернет-магазины", "Лендинги и порталы"],
-  },
-  {
-    title: "Создание сайта",
-    categories: ["Корпоративные", "Интернет-магазины", "Лендинги и порталы"],
-  },
-  {
-    title: "Создание сайта",
-    categories: ["Корпоративные", "Интернет-магазины", "Лендинги и порталы"],
-  },
-  {
-    title: "Создание сайта",
-    categories: ["Корпоративные", "Интернет-магазины", "Лендинги и порталы"],
-  },
-];
+interface Service {
+  id: number;
+  title: string;
+  categories: string[]; 
+}
 
 export default function ServicesMenu() {
+  const [services, setServices] = useState<Service[]>([]);
   const [selected, setSelected] = useState<number | null>(null);
+  const [error, setError] = useState<string>('');
+
+  
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const data = await getServices();
+        
+        const formattedServices = data.map((item: any) => ({
+          id: item.id,
+          title: item.title,
+          categories: item.items || [], 
+        }));
+        setServices(formattedServices);
+      } catch (err) {
+        setError('Ошибка загрузки данных с бэкенда');
+      }
+    };
+    fetchServices();
+  }, []);
 
   return (
     <div className="w-full md:w-1/2 mt-8 md:mt-0 bg-[#344F73] h-auto rounded-[24px] p-4">
       <div className="flex flex-col gap-4 custom-scroll overflow-auto lg:h-[160px] xl:h-60 2xl:h-96 pr-3">
-        {services.map((service, index) => (
-          <div
-            key={index}
-            className="p-4 bg-[rgba(255,255,255,0.26)] text-white rounded-xl flex flex-col md:flex-row md:items-center gap-4"
-          >
-            <div className="flex-1">
-              <Text
-                as="h2"
-                size="lg"
-                weight="semibold"
-                className="text-lg font-semibold flex items-center gap-2"
-              >
-                <FaCog className="text-white text-2xl" />
-                {service.title}
-              </Text>
-              <ul className="text-sm text-gray-300 mt-1 ml-2 space-y-1">
-                {service.categories.map((category, i) => (
-                  <li key={i} className="list-inside list-disc">
-                    <Text as="span" size="sm" color="white">
-                      {category}
-                    </Text>
-                  </li>
-                ))}
-              </ul>
+        {error ? (
+          <p className="text-red-500">{error}</p>
+        ) : (
+          services.map((service, index) => (
+            <div
+              key={service.id}
+              className="p-4 bg-[rgba(255,255,255,0.26)] text-white rounded-xl flex flex-col md:flex-row md:items-center gap-4"
+            >
+              <div className="flex-1">
+                <Text
+                  as="h2"
+                  size="lg"
+                  weight="semibold"
+                  className="text-lg font-semibold flex items-center gap-2"
+                >
+                  <FaCog className="text-white text-2xl" />
+                  {service.title}
+                </Text>
+                <ul className="text-sm text-gray-300 mt-1 ml-2 space-y-1">
+                  {service.categories.map((category, i) => (
+                    <li key={i} className="list-inside list-disc">
+                      <Text as="span" size="sm" color="white">
+                        {category}
+                      </Text>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <Button
+                text="Открыть"
+                active={selected === index}
+                onClick={() => setSelected(index)}
+                type="card"
+                className="left-[5px] top-[25px]"
+              />
             </div>
-            <Button
-              text="Открыть"
-              active={selected === index}
-              onClick={() => setSelected(index)}
-              type="card"
-              className="left-[5px] top-[25px]"
-            />
-          </div>
-        ))}
+          ))
+        )}
       </div>
 
       <div className="text-gray-400 text-sm text-center mt-6">
