@@ -35,7 +35,7 @@ export default function QuestionMenu() {
   };
 
   return (
-    <div className="md:w-1/2 mt-8 md:mt-0 bg-[#344F73] rounded-[24px] h-auto p-4">
+    <div className="md:w-1/2 mt-8 md:mt-0  rounded-[24px] h-auto p-4">
       <div className="flex flex-col pr-3 overflow-auto lg:h-60 2xl:h-full gap-2">
         {error ? (
           <p className="text-red-500">{error}</p>
