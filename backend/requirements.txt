@@ -1,2 +1,7 @@
 Django==5.1.5
 Pillow==11.1.0
+Python==3.13.1
+Djangorestframework
+Djangorestframework-simplejwt
+Corseheaders
+pip install django-cors-headers

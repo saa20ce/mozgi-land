@@ -14,7 +14,7 @@ export default function Home() {
           </Text>
           <MainMenu />
         </div>
-        <div className="md:w-1/2 mt-8 md:mt-0 z-0">
+        <div className="md:w-1/2 mt-8 md:mt-0 z-0" >
           <img src="/images/Man.png" alt="3D Human" className="hidden md:block w-auto h-[80vh] absolute bottom-0 right-0 z-0"/>
           <img src="/images/ManMobile.png" alt="3D Human" className="md:hidden w-[100vw] h-auto md:h-[80vh] absolute bottom-0 right-0 z-0"/>
         </div>
