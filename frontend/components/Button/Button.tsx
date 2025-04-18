@@ -7,7 +7,7 @@ type ButtonProps = {
     disabled?: boolean;
     href?: string;
     className?:string;
-    type?: "default" | "card" | "portfolio" | "mobilemenu"; 
+    type?: "default" | "card" | "portfolio" | "mobilemenu" | "openbutton" ; 
     onClick?: () => void;
   };
   
@@ -20,8 +20,9 @@ type ButtonProps = {
       { [styles.buttoncard]: type === "card" },
       {[styles.porfoliobutton]: type === "portfolio"},
       {[styles.mobilemenubutton]: type === "mobilemenu"},
-      className,
+      {[styles.tabletmenubutton]: type === "openbutton"},
       
+      className,
       
     );
     
