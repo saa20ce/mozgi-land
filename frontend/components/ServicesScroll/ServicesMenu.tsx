@@ -1,44 +1,27 @@
-import { useState,useEffect } from "react";
+import { useState } from "react";
 import Button from "@/components/Button/Button";
 import { FaCog } from "react-icons/fa";
 import Text from "../Text/Text";
-import { getServices } from "@/lib/api";
 
 interface Service {
   id: number;
   title: string;
-  categories: string[]; 
+  categories: string[];
 }
 
-export default function ServicesMenu() {
-  const [services, setServices] = useState<Service[]>([]);
-  const [selected, setSelected] = useState<number | null>(null);
-  const [error, setError] = useState<string>('');
+interface ServicesMenuProps {
+  initialServices: Service[];
+}
 
-  
-  useEffect(() => {
-    const fetchServices = async () => {
-      try {
-        const data = await getServices();
-        
-        const formattedServices = data.map((item: any) => ({
-          id: item.id,
-          title: item.title,
-          categories: item.items || [], 
-        }));
-        setServices(formattedServices);
-      } catch (err) {
-        setError('Ошибка загрузки данных с бэкенда');
-      }
-    };
-    fetchServices();
-  }, []);
+export default function ServicesMenu({ initialServices }: ServicesMenuProps) {
+  const [services, setServices] = useState<Service[]>(initialServices);
+  const [selected, setSelected] = useState<number | null>(null);
 
   return (
     <div className="w-full md:w-1/2 mt-4 md:mt-0 bg-[#344F73] h-auto rounded-[24px] p-4">
       <div className="flex flex-col gap-4 custom-scroll overflow-auto lg:h-[160px] xl:h-60 2xl:h-96 pr-3">
-        {error ? (
-          <p className="text-red-500">{error}</p>
+        {services.length === 0 ? (
+          <p className="text-red-500">Нет доступных сервисов</p>
         ) : (
           services.map((service, index) => (
             <div

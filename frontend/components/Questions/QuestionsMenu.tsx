@@ -1,44 +1,33 @@
-import { useState,useEffect } from "react";
+// import { useState,useEffect } from "react";
+// import { FaChevronDown } from "react-icons/fa";
+// import Button from "@/components/Button/Button";
+// import { getQuestions } from "@/lib/api";
+import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
-import Button from "@/components/Button/Button";
-import { getQuestions } from "@/lib/api";
+
 interface Question {
   id: number;
   question: string;
   answer: string;
 }
 
-export default function QuestionMenu() {
-  const [questions, setQuestions] = useState<Question[]>([]);
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const [error, setError] = useState<string>('');
+interface QuestionMenuProps {
+  initialQuestions: Question[];
+}
 
-  useEffect(() => {
-    const fetchQuestions = async () => {
-      try {
-        const data = await getQuestions();
-        const formattedQuestions = data.map((item: any) => ({
-          id: item.id,
-          question: item.title,
-          answer: item.description || '',
-        }));
-        setQuestions(formattedQuestions);
-      } catch (err) {
-        setError('Ошибка загрузки данных с бэкенда');
-      }
-    };
-    fetchQuestions();
-  }, []);
+export default function QuestionMenu({ initialQuestions }: QuestionMenuProps) {
+  const [questions, setQuestions] = useState<Question[]>(initialQuestions);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleQuestion = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
-    <div className="md:w-1/2 mt-8 md:mt-0  rounded-[24px] h-auto p-4">
+    <div className="md:w-1/2 mt-8 md:mt-0 rounded-[24px] h-auto p-4">
       <div className="flex flex-col pr-3 overflow-auto lg:h-100 2xl:h-full gap-2">
-        {error ? (
-          <p className="text-red-500">{error}</p>
+        {questions.length === 0 ? (
+          <p className="text-red-500">Нет доступных вопросов</p>
         ) : (
           questions.map((item, index) => (
             <div key={item.id} className="bg-[rgba(255,255,255,0.2)] rounded-lg">

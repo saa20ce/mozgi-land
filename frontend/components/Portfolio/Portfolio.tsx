@@ -1,43 +1,23 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import Button from "../Button/Button";
 import Text from "../Text/Text";
-import { getWorks } from "@/lib/api";
 
-interface Work{
-  id:number;
-  title:string;
-  subtitle:string;
-  category:string;
-  image:string;
+interface Work {
+  id: number;
+  title: string;
+  subtitle: string;
+  category: string;
+  image: string;
 }
 
+interface PortfolioProps {
+  initialWorks: Work[];
+}
 
-export default function Portfolio() {
-  const [works, setWorks] = useState<Work[]>([]);
+export default function Portfolio({ initialWorks }: PortfolioProps) {
+  const [works, setWorks] = useState<Work[]>(initialWorks);
   const [selectedCategory, setSelectedCategory] = useState("все");
   const [scrollY, setScrollY] = useState(0);
-  const [error, setError] = useState<string>('');
-
-
-  useEffect(() => {
-    const fetchWorks = async () => {
-      try {
-        const data = await getWorks();
-       
-        const formattedWorks = data.map((item: any) => ({
-          id: item.id,
-          title: item.title,
-          subtitle: item.description || '', 
-          category: item.type, 
-          image: item.thumbnail || '/images/project.png', 
-        }));
-        setWorks(formattedWorks);
-      } catch (err) {
-        setError('Ошибка загрузки данных с бэкенда');
-      }
-    };
-    fetchWorks();
-  }, []);
 
   const filteredWorks =
     selectedCategory === "все"
@@ -46,7 +26,7 @@ export default function Portfolio() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY); 
+      setScrollY(window.scrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -79,8 +59,8 @@ export default function Portfolio() {
       </div>
 
       <div className="flex-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pb-18 overflow-y-auto lg:max-h-[calc(50vh)] xl:max-h-[calc(60vh)] 2xl:max-h-[calc(65vh)] custom-scroll pl-3 pr-3">
-        {error ? (
-          <p className="text-red-500">{error}</p>
+        {works.length === 0 ? (
+          <p className="text-red-500">Нет доступных работ</p>
         ) : (
           filteredWorks.map((project) => (
             <div
@@ -107,4 +87,3 @@ export default function Portfolio() {
     </div>
   );
 }
-
