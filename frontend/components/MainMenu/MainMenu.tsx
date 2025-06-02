@@ -20,7 +20,7 @@ const MainMenu = ({ isMobileMenuOpen, setIsMobileMenuOpen }: MainMenuProps) => {
     <div className="relative">
       {isHomePage && !isMobileMenuOpen && (
         <div className="xl:hidden  fixed bottom-16 md:bottom-20 left-1/2 -translate-x-1/2 w-full px-4 flex justify-center z-50">
-          
+
           <Button
             text="Открыть меню"
             active
@@ -39,59 +39,59 @@ const MainMenu = ({ isMobileMenuOpen, setIsMobileMenuOpen }: MainMenuProps) => {
             >
               <img src="/images/icon.png" alt="Закрыть меню" />
             </button>
-            
+
             <div className="flex flex-col gap-y-2 space-y-4 ">
-            <Text as="a" href="/">
-              <Button
-                text="Получить консультацию"
-                type="mobilemenu"
-                active
-                className="w-full"
-              />
-            </Text>
-            <Text as="a" href="/service" className="block">
-                 <Button
-                   text="Наши услуги"
-                   type="mobilemenu"
-                   className="w-full"
-                 />
-               </Text>
-               <Text as="a" href="/ourworks" className="block">
-                 <Button
-                   text="Наши работы"
-                   type="mobilemenu"
-                   className="w-full"
-                 />
-               </Text>
-               <Text as="a" href="/questions" className="block">
-                 <Button
-                   text="Частые вопросы"
-                   type="mobilemenu"
-                   className="w-full"
-                 />
-               </Text>
+              <Text as="a" href="/">
+                <Button
+                  text="Получить консультацию"
+                  type="mobilemenu"
+                  active
+                  className="w-full"
+                />
+              </Text>
+              <Text as="a" href="/service" className="block">
+                <Button
+                  text="Наши услуги"
+                  type="mobilemenu"
+                  className="w-full"
+                />
+              </Text>
+              <Text as="a" href="/ourworks" className="block">
+                <Button
+                  text="Наши работы"
+                  type="mobilemenu"
+                  className="w-full"
+                />
+              </Text>
+              <Text as="a" href="/questions" className="block">
+                <Button
+                  text="Частые вопросы"
+                  type="mobilemenu"
+                  className="w-full"
+                />
+              </Text>
             </div>
           </div>
         </div>
       )}
 
-        <div className="hidden xl:flex flex-col gap-y-4 space-y-4 mt-12">
-         <Text as="a" href="/">
-           <Button
-             text="Получить консультацию"
-             active
-           />
-         </Text>
-         <Text as="a" href="/service">
-           <Button text="Наши услуги" />
-         </Text>
-         <Text as="a" href="/ourworks">
-           <Button text="Наши работы" />
-         </Text>
-         <Text as="a" href="/questions">
-           <Button text="Частые вопросы" />
-         </Text>
-       </div>
+      <div className="hidden xl:flex flex-col gap-y-4 space-y-4 mt-12">
+        <Text as="a" href="/">
+          <Button
+            text="Получить консультацию"
+            active
+          />
+        </Text>
+        <Text as="a" href="/service">
+          <Button text="Наши услуги" />
+        </Text>
+        <Text as="a" href="/ourworks">
+          <Button text="Наши работы" />
+        </Text>
+        <Text as="a" href="/questions">
+          <Button text="Частые вопросы" />
+        </Text>
+      </div>
     </div>
   );
 };

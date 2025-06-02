@@ -50,7 +50,7 @@ const Text = ({
         className={clsx(
           textSize[size],
           className,
-          "text-blue-400 hover:underline"
+          "text-blue-400 hover:underline w-fit"
         )}
       >
         {children}

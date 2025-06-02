@@ -40,7 +40,7 @@ export default function ServicesPage({ initialServices }: { initialServices: Ser
 
   return (
     <Layout>
-      <div className="flex flex-col md:flex-row items-center gap-8 h-full w-full mt-48">
+      <div className="flex flex-col md:flex-row items-center gap-8 h-full w-full">
         <div className="md:w-1/2 space-y-6">
           <MainMenu
             isMobileMenuOpen={isMobileMenuOpen}
