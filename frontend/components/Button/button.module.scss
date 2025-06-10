@@ -84,6 +84,23 @@
 	}
 }
 
+.feedbackbutton{
+	font-size: 18px;
+	@media (max-width: 1140px) {
+    width: 272px;
+    height: 46px;
+  }
+  @media (min-width: 1141px) {
+    width: 302px;
+    height: 52px;
+  }
+}
+
+.feedbackbutton > :last-child {
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+}
 .openbutton {
 	display: flex;
 	align-items: center;

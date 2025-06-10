@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from rest_framework.generics import ListAPIView
-from .models import Works,Questions,Services
-from .serializers import WorksSerializer,QuestionsSerializer,ServicesSerializer
+from .models import Works,Questions,Services,FeedbackSubmission
+from .serializers import WorksSerializer,QuestionsSerializer,ServicesSerializer,FeedbackSubmissionSerializer
 from rest_framework.permissions import AllowAny
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.generics import ListAPIView, CreateAPIView
 # Create your views here.
 
 class WorksListView(ListAPIView):
@@ -29,3 +32,14 @@ class ServicesListView(ListAPIView):
         queryset = Services.objects.all()
         print(f"Queryset:{queryset}")
         return queryset
+    
+class FeedbackSubmissionView(CreateAPIView):
+    serializer_class = FeedbackSubmissionSerializer
+    permission_classes = [AllowAny]
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            self.perform_create(serializer)
+            return Response({"message": "Заявка успешно создана"}, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -18,7 +18,7 @@ export default function ServicesMenu({ initialServices }: ServicesMenuProps) {
   const [selected, setSelected] = useState<number | null>(null);
 
   return (
-    <div className="w-full md:w-1/2 mt-4 md:mt-0 bg-[#344F73] h-auto rounded-[24px] p-4">
+    <div className="w-full md:w-1/2 mt-4 md:mt-0 bg-[#1C202DB2] h-auto rounded-[24px] p-4">
       <div className="flex flex-col gap-4 custom-scroll overflow-auto lg:h-[160px] xl:h-60 2xl:h-96 pr-3">
         {services.length === 0 ? (
           <p className="text-red-500">Нет доступных сервисов</p>

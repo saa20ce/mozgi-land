@@ -5,7 +5,7 @@ type TextProps = {
   children: React.ReactNode;
   className?: string;
   as?: keyof JSX.IntrinsicElements;
-  size?: "sm" | "md" | "lg" | "xl";
+  size?: "sm" | "md" | "lg" | "xl" | "xxl";
   color?: "white" | "gray" | "black" | "blue" | "red" | "green";
   weight?: "light" | "normal" | "medium" | "semibold" | "bold";
   href?: string;
@@ -25,6 +25,7 @@ const Text = ({
     md: "text-base",
     lg: "text-lg",
     xl: "text-xl font-semibold",
+    xxl: "text-[26px]"
   };
 
   const textColor = {

@@ -7,8 +7,8 @@ type ButtonProps = {
     disabled?: boolean;
     href?: string;
     className?:string;
-    type?: "default" | "card" | "portfolio" | "mobilemenu" | "openbutton" ; 
-    onClick?: () => void;
+    type?: "default" | "card" | "portfolio" | "mobilemenu" | "openbutton" | "feedback"; 
+    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   };
   
   const Button = ({ text, active,className, disabled,type="default",onClick,}: ButtonProps) => {
@@ -21,6 +21,7 @@ type ButtonProps = {
       {[styles.porfoliobutton]: type === "portfolio"},
       {[styles.mobilemenubutton]: type === "mobilemenu"},
       {[styles.tabletmenubutton]: type === "openbutton"},
+      {[styles.feedbackbutton]: type ==='feedback'},
       
       className,
       
