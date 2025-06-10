@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Works,Questions,Services
+from .models import Works,Questions,Services,FeedbackSubmission
 
 class WorksSerializer(serializers.ModelSerializer):
     class Meta:
@@ -16,3 +16,9 @@ class ServicesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Services
         fields = ['id','title','items']
+
+class FeedbackSubmissionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FeedbackSubmission
+        fields = ['id','name','phone','created_at']
+        

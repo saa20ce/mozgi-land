@@ -45,3 +45,18 @@ class Services(models.Model):
 
     def __str__(self):
         return self.title
+
+class FeedbackSubmission(models.Model):
+    name = models.CharField(verbose_name='ФИО',max_length=100)
+    phone = models.CharField(verbose_name='Телефон',max_length=20)
+    created_at = models.DateTimeField(auto_now=True,verbose_name='Дата создания')
+
+    class Meta:
+        verbose_name='Заявка'
+        verbose_name_plural='Заявки'
+    def __str__(self):
+        return f"{self.name} - {self.phone}"
+    
+
+
+
