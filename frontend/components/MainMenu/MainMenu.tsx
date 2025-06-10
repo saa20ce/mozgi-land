@@ -75,7 +75,7 @@ const MainMenu = ({ isMobileMenuOpen, setIsMobileMenuOpen }: MainMenuProps) => {
         </div>
       )}
 
-      <div className="hidden xl:flex flex-col gap-y-4 space-y-4 mt-12">
+      <div className="hidden xl:flex flex-col xl:gap-y-3 2xl:gap-y-4 2xl:space-y-4 2xl:mt-12">
         <Text as="a" href="/">
           <Button
             text="Получить консультацию"

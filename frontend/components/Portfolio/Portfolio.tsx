@@ -39,19 +39,19 @@ export default function Portfolio({ initialWorks }: PortfolioProps) {
     <div className="w-full flex flex-col rounded-[24px] p-6">
       <div className="flex justify-center gap-6 mb-8">
         <Button
-          text="все"
+          text="Все"
           onClick={() => setSelectedCategory("все")}
           active={selectedCategory === "все"}
           type="portfolio"
         />
         <Button
-          text="дизайн"
+          text="Дизайн"
           onClick={() => setSelectedCategory("дизайн")}
           active={selectedCategory === "дизайн"}
           type="portfolio"
         />
         <Button
-          text="разработка"
+          text="Разработка"
           onClick={() => setSelectedCategory("разработка")}
           active={selectedCategory === "разработка"}
           type="portfolio"
@@ -65,9 +65,8 @@ export default function Portfolio({ initialWorks }: PortfolioProps) {
           filteredWorks.map((project) => (
             <div
               key={project.id}
-              className={`bg-[#7b7c7e] rounded-lg p-4 text-left overflow-hidden transition-opacity duration-300 ease-in-out ${
-                scrollY > 100 ? "opacity-0" : "opacity-100"
-              }`}
+              className={`bg-[#7b7c7e] rounded-lg p-4 text-left overflow-hidden transition-opacity duration-300 ease-in-out ${scrollY > 100 ? "opacity-0" : "opacity-100"
+                }`}
             >
               <img
                 src={project.image}

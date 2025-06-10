@@ -7,11 +7,12 @@ module.exports = {
   theme: {
     screens: {
       'sm': '576px',
-      'sm-h': {'raw': '(min-width: 576px) and (orientation: landscape)'},
+      'sm-h': { 'raw': '(min-width: 576px) and (orientation: landscape)' },
       'md': '768px',
-      'md-h': {'raw': '(min-width: 768px) and (orientation: landscape)'},
-      // 'lg': '992px',
+      'md-h': { 'raw': '(min-width: 768px) and (orientation: landscape)' },
+      'lg': '992px',
       'xl': '1140px',
+      '2xl': '1536px',
     },
     container: {
       center: true,
