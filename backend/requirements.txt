@@ -2,5 +2,4 @@ Django==5.1.5
 Pillow==11.1.0
 Djangorestframework
 Djangorestframework-simplejwt
-Corseheaders
 django-cors-headers
