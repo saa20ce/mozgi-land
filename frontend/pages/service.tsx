@@ -1,10 +1,14 @@
 import Layout from '@/components/Layout/Layout';
-import Text from '@/components/Text/Text';
 import MainMenu from '@/components/MainMenu/MainMenu';
 import ServicesMenu from '@/components/ServicesScroll/ServicesMenu';
-import { useRouter } from "next/router";
 import { useState } from 'react';
 import { getServices } from '@/lib/api';
+
+interface ServiceApiData{
+  id: number;
+  title: string;
+  items : string[] | null;
+}
 
 interface Service {
   id: number;
@@ -15,7 +19,7 @@ interface Service {
 export async function getServerSideProps() {
   try {
     const data = await getServices();
-    const formattedServices = data.map((item: any) => ({
+    const formattedServices = data.map((item: ServiceApiData) => ({
       id: item.id,
       title: item.title,
       categories: item.items || [],

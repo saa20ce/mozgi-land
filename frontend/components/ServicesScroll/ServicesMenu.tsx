@@ -2,6 +2,7 @@ import { useState } from "react";
 import Button from "@/components/Button/Button";
 import { FaCog } from "react-icons/fa";
 import Text from "../Text/Text";
+import Image from "next/image";
 
 interface Service {
   id: number;
@@ -14,7 +15,7 @@ interface ServicesMenuProps {
 }
 
 export default function ServicesMenu({ initialServices }: ServicesMenuProps) {
-  const [services, setServices] = useState<Service[]>(initialServices);
+  const [services] = useState<Service[]>(initialServices);
   const [selected, setSelected] = useState<number | null>(null);
 
   return (
@@ -78,13 +79,15 @@ export default function ServicesMenu({ initialServices }: ServicesMenuProps) {
               className={`flex items-center justify-center rounded-lg p-2 ${tech.name === "PHP" ? "w-20 h-19" : "w-16 h-16"
                 }`}
             >
-              <img
+              <Image
                 src={tech.src}
                 alt={tech.name}
                 className={`object-contain ${tech.name === "Go"
                   ? "scale-150 translate-x-[-4px]"
                   : "w-[100%] h-[90%]"
                   }`}
+                width={tech.name === "PHP" ? 80 : 64}
+                height={tech.name === "PHP" ? 76 : 64}
               />
             </div>
           ))}

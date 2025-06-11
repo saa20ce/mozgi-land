@@ -4,6 +4,13 @@ import QuestionMenu from "@/components/Questions/QuestionsMenu";
 import { useState } from "react";
 import { getQuestions } from "@/lib/api";
 
+
+interface QuestionApiData {
+  id:number;
+  title:string;
+  description : string | null;
+}
+
 interface Question {
   id: number;
   question: string;
@@ -11,15 +18,13 @@ interface Question {
 }
 
 export async function getServerSideProps() {
-  console.log("getServerSideProps вызван на сервере");
   try {
     const data = await getQuestions();
-    const formattedQuestions = data.map((item: any) => ({
+    const formattedQuestions = data.map((item: QuestionApiData) => ({
       id: item.id,
       question: item.title,
       answer: item.description || "",
     }));
-    console.log("Данные с сервера:", formattedQuestions);
     return {
       props: {
         initialQuestions: formattedQuestions,
