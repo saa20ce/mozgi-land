@@ -1,5 +1,4 @@
 import Layout from "@/components/Layout/Layout";
-import Text from "@/components/Text/Text";
 import MainMenu from "@/components/MainMenu/MainMenu";
 import QuestionMenu from "@/components/Questions/QuestionsMenu";
 import { useState } from "react";

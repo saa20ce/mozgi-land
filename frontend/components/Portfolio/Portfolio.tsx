@@ -36,8 +36,8 @@ export default function Portfolio({ initialWorks }: PortfolioProps) {
   }, []);
 
   return (
-    <div className="w-full flex flex-col rounded-[24px] p-6">
-      <div className="flex justify-center gap-6 mb-8">
+    <div className="w-full flex flex-col rounded-[24px] py-6 lg:p-6">
+      <div className="flex justify-center gap-2 lg:gap-6 mb-8">
         <Button
           text="Все"
           onClick={() => setSelectedCategory("все")}
@@ -58,15 +58,14 @@ export default function Portfolio({ initialWorks }: PortfolioProps) {
         />
       </div>
 
-      <div className="flex-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pb-18 overflow-y-auto lg:max-h-[calc(50vh)] xl:max-h-[calc(60vh)] 2xl:max-h-[calc(65vh)] custom-scroll pl-3 pr-3">
+      <div className="flex-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pb-18 overflow-y-auto h-[57vh] lg:h-auto lg:max-h-[calc(50vh)] xl:max-h-[calc(60vh)] 2xl:max-h-[calc(65vh)] custom-scroll pl-0 lg:pl-3 pr-3">
         {works.length === 0 ? (
           <p className="text-red-500">Нет доступных работ</p>
         ) : (
           filteredWorks.map((project) => (
             <div
               key={project.id}
-              className={`bg-[#7b7c7e] rounded-lg p-4 text-left overflow-hidden transition-opacity duration-300 ease-in-out ${scrollY > 100 ? "opacity-0" : "opacity-100"
-                }`}
+              className={`bg-[#7b7c7e] h-[300px] lg:h-auto rounded-lg p-4 text-left overflow-hidden transition-opacity duration-300 ease-in-out`}
             >
               <img
                 src={project.image}
