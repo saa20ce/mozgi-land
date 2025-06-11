@@ -36,14 +36,6 @@ class ServicesListView(ListAPIView):
         print(f"Queryset:{queryset}")
         return queryset
     
-class FeedbackSubmissionView(CreateAPIView):
-    serializer_class = FeedbackSubmissionSerializer
-    permission_classes = [AllowAny]
-
-    def post(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-
-
 logger = logging.getLogger(__name__)
 
 class FeedbackSubmissionView(CreateAPIView):
