@@ -20,14 +20,14 @@ export default function ServicesMenu({ initialServices }: ServicesMenuProps) {
 
   return (
     <div className="w-full md:w-1/2 mt-4 md:mt-0 bg-[#1C202DB2] h-auto rounded-[24px] p-4">
-      <div className="flex flex-col gap-4 custom-scroll overflow-auto lg:h-[160px] xl:h-60 2xl:h-96 pr-3">
+      <div className="flex flex-col gap-4 custom-scroll overflow-auto h-[40vh] lg:h-[160px] xl:h-60 2xl:h-96 pr-3">
         {services.length === 0 ? (
           <p className="text-red-500">Нет доступных сервисов</p>
         ) : (
           services.map((service, index) => (
             <div
               key={service.id}
-              className="p-4 bg-[rgba(255,255,255,0.26)] text-white rounded-xl flex flex-col md:flex-row md:items-center gap-4"
+              className="p-4 bg-[#344f734f] text-white rounded-xl flex flex-col md:flex-row md:items-center gap-4"
             >
               <div className="flex-1">
                 <Text
@@ -54,7 +54,7 @@ export default function ServicesMenu({ initialServices }: ServicesMenuProps) {
                 active={selected === index}
                 onClick={() => setSelected(index)}
                 type="card"
-                className="left-[5px] top-[25px]"
+                className="left-[5px] lg:top-[25px]"
               />
             </div>
           ))
@@ -65,7 +65,7 @@ export default function ServicesMenu({ initialServices }: ServicesMenuProps) {
         <Text as="p" color="white" size="lg" weight="medium">
           Технологии которые мы используем:
         </Text>
-        <div className="flex gap-4 flex-wrap justify-center mt-2">
+        <div className="flex gap-4 flex-nowrap lg:flex-wrap justify-center mt-2 ">
           {[
             { name: "Go", src: "/images/gologo.svg" },
             { name: "PHP", src: "/images/phplogo.svg" },
@@ -76,20 +76,18 @@ export default function ServicesMenu({ initialServices }: ServicesMenuProps) {
           ].map((tech, i) => (
             <div
               key={i}
-              className={`flex items-center justify-center rounded-lg p-2 ${
-                tech.name === "PHP" ? "w-20 h-19" : "w-16 h-16"
-              }`}
+              className={`flex items-center justify-center rounded-lg p-2 ${tech.name === "PHP" ? "w-20 h-19" : "w-16 h-16"
+                }`}
             >
               <Image
                 src={tech.src}
                 alt={tech.name}
-                className={`object-contain ${
-                  tech.name === "Go"
-                    ? "scale-150 translate-x-[-4px]"
-                    : "w-[100%] h-[90%]"
-                }`}
-                width={tech.name === "PHP" ? 80 : 64} 
-                height={tech.name === "PHP" ? 76 : 64} 
+                className={`object-contain ${tech.name === "Go"
+                  ? "scale-150 translate-x-[-4px]"
+                  : "w-[100%] h-[90%]"
+                  }`}
+                width={tech.name === "PHP" ? 80 : 64}
+                height={tech.name === "PHP" ? 76 : 64}
               />
             </div>
           ))}
