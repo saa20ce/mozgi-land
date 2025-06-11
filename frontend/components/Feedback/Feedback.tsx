@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from '../Button/Button';
 import Text from '../Text/Text';
+import Image from 'next/image';
 
 type FeedbackProps = {
   onSubmit?: (data: { phone: string; name: string }) => void;
@@ -74,7 +75,6 @@ const Feedback: React.FC<FeedbackProps> = ({ onSubmit, onClose }) => {
           throw new Error('Failed to submit data');
         }
 
-        const data = await response.json();
         if (onSubmit) onSubmit({ phone, name });
         setIsSubmitted(true);
         setSubmitError(null);
@@ -93,7 +93,13 @@ const Feedback: React.FC<FeedbackProps> = ({ onSubmit, onClose }) => {
         className="w-[502px] h-[232px] p-9 rounded-2xl bg-[#1E2D41] flex flex-col gap-4 justify-center items-center text-center"
       >
         <div className="flex items-center w-full">
-          <img src="/images/done.png" alt="Заявка принята" className="w-14 h-14 mr-2" />
+          <Image
+            src="/images/done.png"
+            alt='Заявка прияната'
+            className='w-14 h-14 mr-2'
+            width={56}
+            height={56}
+          />
           <div className="flex-1 text-left">
             <Text as="p" color="white" size="xxl">
               Ваша заявка принята!

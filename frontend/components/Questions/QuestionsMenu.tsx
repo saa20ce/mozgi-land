@@ -1,7 +1,3 @@
-// import { useState,useEffect } from "react";
-// import { FaChevronDown } from "react-icons/fa";
-// import Button from "@/components/Button/Button";
-// import { getQuestions } from "@/lib/api";
 import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 
@@ -16,7 +12,7 @@ interface QuestionMenuProps {
 }
 
 export default function QuestionMenu({ initialQuestions }: QuestionMenuProps) {
-  const [questions, setQuestions] = useState<Question[]>(initialQuestions);
+  const [questions] = useState<Question[]>(initialQuestions);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleQuestion = (index: number) => {

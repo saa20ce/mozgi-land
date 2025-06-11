@@ -6,9 +6,14 @@ type FeedbackData = {
   name: string;
 };
 
+type FeedbackResponseData = {
+  id: number;
+  created_at: string;
+};
+
 type ApiResponse = {
   message: string;
-  data?: any;
+  data?: FeedbackResponseData;
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<ApiResponse | string>) {
@@ -37,7 +42,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       },
     });
 
-    return res.status(200).json({ message: 'Data submitted successfully', data: response.data });
+    return res.status(200).json({ message: 'Data submitted successfully', data: response.data.data });
   } catch (error) {
     const axiosError = error as AxiosError;
     console.error('Error submitting to backend:', axiosError.response?.data || axiosError.message);

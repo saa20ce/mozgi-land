@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Button from "../Button/Button";
 import Text from "../Text/Text";
+import Image from "next/image";
 
 interface Work {
   id: number;
@@ -15,7 +16,7 @@ interface PortfolioProps {
 }
 
 export default function Portfolio({ initialWorks }: PortfolioProps) {
-  const [works, setWorks] = useState<Work[]>(initialWorks);
+  const [works] = useState<Work[]>(initialWorks);
   const [selectedCategory, setSelectedCategory] = useState("все");
   const [scrollY, setScrollY] = useState(0);
 
@@ -68,10 +69,12 @@ export default function Portfolio({ initialWorks }: PortfolioProps) {
               className={`bg-[#7b7c7e] rounded-lg p-4 text-left overflow-hidden transition-opacity duration-300 ease-in-out ${scrollY > 100 ? "opacity-0" : "opacity-100"
                 }`}
             >
-              <img
+              <Image
                 src={project.image}
                 alt={project.title}
                 className="w-full rounded-lg mb-2 h-auto object-cover"
+                width={300} 
+                height={200} 
               />
               <Text as="h3" size="lg" color="white" className="font-semibold mt-2">
                 {project.title}

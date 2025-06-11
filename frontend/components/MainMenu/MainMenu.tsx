@@ -3,6 +3,7 @@ import Text from "../Text/Text";
 import { useRouter } from "next/router";
 import Feedback from "../Feedback/Feedback";
 import React, { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 
 interface MainMenuProps {
   isMobileMenuOpen: boolean;
@@ -22,11 +23,6 @@ const MainMenu = ({ isMobileMenuOpen, setIsMobileMenuOpen }: MainMenuProps) => {
   const handleOpenForm = () => {
     setIsFormOpen(true);
   };
-
-  const handleCloseForm = () => {
-    setIsFormOpen(false);
-  };
-
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -64,7 +60,12 @@ const MainMenu = ({ isMobileMenuOpen, setIsMobileMenuOpen }: MainMenuProps) => {
               className="absolute -top-12 right-0 md:right-0 text-white text-2xl w-8 h-8 flex items-center justify-center rounded-full bg-gray-600 hover:bg-gray-700 z-[1001]"
               onClick={() => handleMenuToggle(false)}
             >
-              <img src="/images/icon.png" alt="Закрыть меню" />
+            <Image
+              src="/images/icon.png"
+              alt="Закрыть меню"
+              width = {32}
+              height = {36}
+            />  
             </button>
 
             <div className="flex flex-col gap-y-2 space-y-4">

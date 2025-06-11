@@ -1,5 +1,5 @@
 import Link from 'next/link';
-
+import Image from 'next/image';
 const Header = () => {
   return (
     <header className="flex items-center justify-between p-4 bg-[#F6F6F633] w-full h-[64px] rounded-full">
@@ -16,7 +16,12 @@ const Header = () => {
         </nav>
       </div>
       <div className="rounded-full">
-        <img src="/images/icon-globe.png" alt="" className="w-[40px] h-[40px]"/>
+        <Image
+          src="/images/icon-globe.png"
+          alt="Смена языка"
+          width={40} 
+          height={40} 
+        />
       </div>
     </header>
   );

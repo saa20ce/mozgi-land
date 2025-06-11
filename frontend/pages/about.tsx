@@ -1,6 +1,5 @@
 import Layout from '@/components/Layout/Layout';
-import Text from '@/components/Text/Text';
-import MainMenu from '@/components/MainMenu/MainMenu';
+
 
 export default function Home() {
 
