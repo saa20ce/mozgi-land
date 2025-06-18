@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 type FeedbackProps = {
   onSubmit?: (data: { phone: string; name: string }) => void;
-  onClose?: () => void;
+  onClose: () => void;
 };
 
 const Feedback: React.FC<FeedbackProps> = ({ onSubmit, onClose }) => {
@@ -90,28 +90,28 @@ const Feedback: React.FC<FeedbackProps> = ({ onSubmit, onClose }) => {
   if (isSubmitted) {
     return (
       <div
-        className="w-[502px] h-[232px] p-9 rounded-2xl bg-[#1E2D41] flex flex-col gap-4 justify-center items-center text-center"
+        className="lg:w-[502px] lg:h-[232px] w-[320px] h-[202px] p-9 rounded-2xl bg-[#1E2D41] flex flex-col gap-4 justify-center items-center text-center"
       >
-        <div className="flex items-center w-full">
+        <div className="flex items-center gap-4 w-full">
           <Image
             src="/images/done.png"
-            alt='Заявка прияната'
-            className='w-14 h-14 mr-2'
-            width={56}
-            height={56}
+            alt='Заявка принята'
+            className='lg:w-[68px] lg:h-[68px] w-[32px] h-[32px]'
+            width={68} 
+            height={68}
           />
           <div className="flex-1 text-left">
-            <Text as="p" color="white" size="xxl">
+            <Text as="p" color="white" className='lg:text-3xl text-[18px] text-lg'>
               Ваша заявка принята!
             </Text>
-            <Text as="p" color="white" size="lg">
+            <Text as="p" color="white" className='lg:text-[18px] text-[10px]'>
               Мы свяжемся с вами в течение 5 минут
             </Text>
           </div>
           
         </div>
         <div className="flex justify-center w-full">
-          <Button text="Хорошо" className='mt-4' active type="feedback" onClick={() => { setIsSubmitted(false); if (onClose) onClose(); }} />
+          <Button text="Хорошо"  active type="feedback" onClick={() => { setIsSubmitted(false); onClose(); }} />
         </div>
       </div>
     );
@@ -120,16 +120,16 @@ const Feedback: React.FC<FeedbackProps> = ({ onSubmit, onClose }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className={`w-[374px] h-[364px] bg-[#1E2D41] p-9 rounded-2xl flex flex-col gap-9 pb-15 justify-between overflow-y-hidden ${
+      className={`lg:w-[374px] lg:h-[364px] w-[325px] h-[360px] bg-[#1E2D41] p-9 rounded-2xl flex flex-col gap-9 pb-15 justify-between overflow-y-hidden ${
         hasErrors ? 'h-auto min-h-[364px] overflow-y-auto' : ''
       }`}
     >
       <div className="flex flex-col gap-4 h-full">
-        <Text as="label" color="white" size="xxl">
+        <Text as="label" color="white" className='lg:text-[26px] text-lg'>
           Заявка на консультацию
         </Text>
         <div className="flex flex-col gap-3 flex-grow overflow-y-hidden">
-          <Text as="label" color="white" size="xl">
+          <Text as="label" color="white" className='text-[18px]'>
             Введите свои данные:
           </Text>
           <input

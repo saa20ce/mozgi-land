@@ -64,7 +64,7 @@ const MainMenu = ({ isMobileMenuOpen, setIsMobileMenuOpen }: MainMenuProps) => {
               src="/images/icon.png"
               alt="Закрыть меню"
               width = {32}
-              height = {36}
+              height = {32}
             />  
             </button>
 
@@ -78,21 +78,21 @@ const MainMenu = ({ isMobileMenuOpen, setIsMobileMenuOpen }: MainMenuProps) => {
                   onClick={handleOpenForm}
                 />
               </div>
-              <Text as="a" href="/service" className="block">
+              <Text as="a" href="/service" className="block w-full">
                 <Button
                   text="Наши услуги"
                   type="mobilemenu"
                   className="w-full"
                 />
               </Text>
-              <Text as="a" href="/ourworks" className="block">
+              <Text as="a" href="/ourworks" className="block w-full">
                 <Button
                   text="Наши работы"
                   type="mobilemenu"
                   className="w-full"
                 />
               </Text>
-              <Text as="a" href="/questions" className="block">
+              <Text as="a" href="/questions" className="block w-full">
                 <Button
                   text="Частые вопросы"
                   type="mobilemenu"
@@ -107,7 +107,7 @@ const MainMenu = ({ isMobileMenuOpen, setIsMobileMenuOpen }: MainMenuProps) => {
       {isFormOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[2000] xl:backdrop-blur-md">
           <div ref={formRef} className="relative">
-            <Feedback onSubmit={(data) => console.log(data)} />
+            <Feedback onSubmit={(data) => console.log(data)} onClose={()=> setIsFormOpen(false)} />
           </div>
         </div>
       )}
@@ -118,16 +118,17 @@ const MainMenu = ({ isMobileMenuOpen, setIsMobileMenuOpen }: MainMenuProps) => {
             text="Получить консультацию"
             active
             onClick={handleOpenForm}
+            type="desktopmenu"
           />
         </div>
         <Text as="a" href="/service">
-          <Button text="Наши услуги" />
+          <Button text="Наши услуги" type="desktopmenu" />
         </Text>
         <Text as="a" href="/ourworks">
-          <Button text="Наши работы" />
+          <Button text="Наши работы" type="desktopmenu" />
         </Text>
         <Text as="a" href="/questions">
-          <Button text="Частые вопросы" />
+          <Button text="Частые вопросы" type="desktopmenu"/>
         </Text>
       </div>
     </div>

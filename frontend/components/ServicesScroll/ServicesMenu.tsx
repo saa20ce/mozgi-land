@@ -27,7 +27,7 @@ export default function ServicesMenu({ initialServices }: ServicesMenuProps) {
           services.map((service, index) => (
             <div
               key={service.id}
-              className="p-4 bg-[#344f734f] text-white rounded-xl flex flex-col md:flex-row md:items-center gap-4"
+              className="p-4 bg-[#344f734f] text-white rounded-xl flex items-center justify-between md:flex-row md:items-center gap-4"
             >
               <div className="flex-1">
                 <Text
@@ -51,10 +51,10 @@ export default function ServicesMenu({ initialServices }: ServicesMenuProps) {
               </div>
               <Button
                 text="Открыть"
+                type="service"
                 active={selected === index}
                 onClick={() => setSelected(index)}
-                type="card"
-                className="left-[5px] lg:top-[25px]"
+                
               />
             </div>
           ))

@@ -19,8 +19,8 @@ const Header = () => {
         <Image
           src="/images/icon-globe.png"
           alt="Смена языка"
-          width={40} 
-          height={40} 
+          width={32} 
+          height={32} 
         />
       </div>
     </header>
