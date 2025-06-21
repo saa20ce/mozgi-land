@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import Button from "../Button/Button";
 import Text from "../Text/Text";
 import Image from "next/image";
@@ -18,24 +18,12 @@ interface PortfolioProps {
 export default function Portfolio({ initialWorks }: PortfolioProps) {
   const [works] = useState<Work[]>(initialWorks);
   const [selectedCategory, setSelectedCategory] = useState("все");
-  const [scrollY, setScrollY] = useState(0);
+
 
   const filteredWorks =
     selectedCategory === "все"
       ? works
       : works.filter((work) => work.category === selectedCategory);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
     <div className="w-full flex flex-col rounded-[24px] py-6 lg:p-6">
       <div className="flex justify-center gap-2 lg:gap-6 mb-8">
