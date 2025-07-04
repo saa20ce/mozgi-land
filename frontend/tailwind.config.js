@@ -37,6 +37,7 @@ module.exports = {
         'light-blue': '#344F73',
         'light-red': '#FF6B6B',
         'navy-blue': '#232C3F',
+        'white-custom': '#F6F6F6'
       },
     },
   },

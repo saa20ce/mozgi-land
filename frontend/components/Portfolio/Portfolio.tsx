@@ -25,8 +25,8 @@ export default function Portfolio({ initialWorks }: PortfolioProps) {
       ? works
       : works.filter((work) => work.category === selectedCategory);
   return (
-    <div className="w-full flex flex-col rounded-[24px] py-6 lg:p-6">
-      <div className="flex justify-center gap-2 lg:gap-6 mb-8">
+    <div className="w-full flex flex-col gap-3 rounded-[24px] ">
+      <div className="flex justify-center gap-2 lg:gap-6">
         <Button
           text="Все"
           onClick={() => setSelectedCategory("все")}
@@ -47,29 +47,32 @@ export default function Portfolio({ initialWorks }: PortfolioProps) {
         />
       </div>
 
-      <div className="flex-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pb-18 overflow-y-auto h-[57vh] lg:h-auto lg:max-h-[calc(50vh)] xl:max-h-[calc(60vh)] 2xl:max-h-[calc(65vh)] custom-scroll pl-0 lg:pl-3 pr-3">
+      <div className="flex-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 pb-18 overflow-y-auto h-[calc(100vh-180px)] lg:h-auto lg:max-h-[calc(90vh)] xl:max-h-[calc(60vh)] 2xl:max-h-[calc(65vh)] pl-0 pr-3">{/*overflow-auto scrollbar-none */}
         {works.length === 0 ? (
           <p className="text-red-500">Нет доступных работ</p>
         ) : (
           filteredWorks.map((project) => (
             <div
-              key={project.id}
-              className={`bg-[#7b7c7e] h-[300px] lg:h-auto rounded-lg p-4 text-left overflow-hidden transition-opacity duration-300 ease-in-out`}
-            >
-              <Image
-                src={project.image}
-                alt={project.title}
-                className="w-full rounded-lg mb-2 h-auto object-cover"
-                width={300} 
-                height={200} 
-              />
-              <Text as="h3" size="lg" color="white" className="font-semibold mt-2">
+            key={project.id}
+            className="relative bg-[#7b7c7e] h-[258px] rounded-lg overflow-hidden transition-opacity duration-300 ease-in-out"
+          >
+            <Image
+              src={project.image}
+              alt={project.title}
+              className="absolute inset-0 w-full h-full object-cover object-center"
+              width={300}
+              height={200}
+              priority
+            />
+            <div className="absolute bottom-0 w-full bg-black bg-opacity-50 py-2 px-4 rounded-b-lg text-white z-10">
+              <Text as="h3" size="xl" weight="medium">
                 {project.title}
               </Text>
-              <Text as="p" size="sm" color="white">
+              <Text as="p" size="lg" >
                 {project.subtitle}
               </Text>
             </div>
+          </div>
           ))
         )}
       </div>

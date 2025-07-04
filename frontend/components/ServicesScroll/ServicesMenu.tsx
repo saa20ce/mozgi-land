@@ -2,7 +2,6 @@ import { useState } from "react";
 import Button from "@/components/Button/Button";
 import { FaCog } from "react-icons/fa";
 import Text from "../Text/Text";
-import Image from "next/image";
 
 interface Service {
   id: number;
@@ -19,22 +18,23 @@ export default function ServicesMenu({ initialServices }: ServicesMenuProps) {
   const [selected, setSelected] = useState<number | null>(null);
 
   return (
-    <div className="w-full md:w-1/2 mt-4 md:mt-0 bg-[#1C202DB2] h-auto rounded-[24px] p-4">
-      <div className="flex flex-col gap-4 custom-scroll overflow-auto h-[40vh] lg:h-[160px] xl:h-60 2xl:h-96 pr-3">
+    <div className="w-full md:w-1/2 md:mt-0 h-auto  overflow-y-auto ">    { /* overflow-auto scrollbar-none*/}
+
+      <div className="flex flex-col gap-4 custom-scroll rounded-[24px] lg:h-[160px] xl:h-60 2xl:h-96">
         {services.length === 0 ? (
           <p className="text-red-500">Нет доступных сервисов</p>
         ) : (
           services.map((service, index) => (
             <div
               key={service.id}
-              className="p-4 bg-[#344f734f] text-white rounded-xl flex items-center justify-between md:flex-row md:items-center gap-4"
+              className="p-3 bg-[#3B404F] text-white rounded-xl flex items-center justify-between md:flex-row md:items-center gap-4 "
             >
               <div className="flex-1">
                 <Text
                   as="h2"
-                  size="lg"
+                  size="md"
                   weight="semibold"
-                  className="text-lg font-semibold flex items-center gap-2"
+                  className="font-semibold flex items-center gap-2"
                 >
                   <FaCog className="text-white text-2xl" />
                   {service.title}
@@ -61,7 +61,7 @@ export default function ServicesMenu({ initialServices }: ServicesMenuProps) {
         )}
       </div>
 
-      <div className="text-gray-400 text-sm text-center mt-6">
+      {/* <div className="text-gray-400 text-sm text-center mt-6">
         <Text as="p" color="white" size="lg" weight="medium">
           Технологии которые мы используем:
         </Text>
@@ -91,8 +91,8 @@ export default function ServicesMenu({ initialServices }: ServicesMenuProps) {
               />
             </div>
           ))}
-        </div>
-      </div>
+        </div> */}
+      {/* </div> */}
     </div>
   );
 }

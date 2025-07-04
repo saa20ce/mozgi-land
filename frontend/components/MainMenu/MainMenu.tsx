@@ -43,7 +43,7 @@ const MainMenu = ({ isMobileMenuOpen, setIsMobileMenuOpen }: MainMenuProps) => {
   return (
     <div className="relative">
       {isHomePage && !isMobileMenuOpen && (
-        <div className="xl:hidden fixed bottom-16 md:bottom-20 left-1/2 -translate-x-1/2 w-full px-4 flex justify-center z-50">
+        <div className="xl:hidden fixed bottom-[68px] md:bottom-20 left-50 -translate-x-1/2 w-full px-5 flex justify-center z-50">
           <Button
             text="Открыть меню"
             active
@@ -105,7 +105,7 @@ const MainMenu = ({ isMobileMenuOpen, setIsMobileMenuOpen }: MainMenuProps) => {
       )}
 
       {isFormOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[2000] xl:backdrop-blur-md">
+        <div className="fixed inset-0 flex items-center justify-center bg-[#00000050] z-[2000] xl:backdrop-blur-md">
           <div ref={formRef} className="relative">
             <Feedback onSubmit={(data) => console.log(data)} onClose={()=> setIsFormOpen(false)} />
           </div>

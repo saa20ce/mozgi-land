@@ -5,6 +5,7 @@
 @import './variables.css';
 
 body {
+	font-family: 'Rubik', sans-serif;
 	background-color: #1c202d;
 	margin: 0;
 }
@@ -57,4 +58,18 @@ body {
 ::-webkit-scrollbar-track {
 	background: rgba(0, 0, 0, 0.1);
 	border-radius: 10px;
+}
+
+
+.scrollbar-none {
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none; 
+}
+
+.scrollable-touch {
+  -webkit-overflow-scrolling: touch;
 }
