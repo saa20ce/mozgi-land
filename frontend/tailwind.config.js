@@ -6,13 +6,14 @@ module.exports = {
   ],
   theme: {
     screens: {
-      'sm': '576px',
-      'sm-h': { 'raw': '(min-width: 576px) and (orientation: landscape)' },
-      'md': '768px',
-      'md-h': { 'raw': '(min-width: 768px) and (orientation: landscape)' },
-      'lg': '992px',
-      'xl': '1140px',
+      sm: '576px',
+      'sm-h': { raw: '(min-width: 576px) and (orientation: landscape)' },
+      md: '768px',
+      'md-h': { raw: '(min-width: 768px) and (orientation: landscape)' },
+      lg: '992px',
+      xl: '1024px',
       '2xl': '1536px',
+      '3xl': '1920px',
     },
     container: {
       center: true,
@@ -23,12 +24,22 @@ module.exports = {
         lg: '24px',
         xl: '24px',
       },
+      screens: {
+        sm: '576px',
+        md: '768px',
+        // lg: '992px',
+        xl: '1024px',
+        '2xl': '1440px',
+        '3xl': '1620px', 
+      },
       maxWidth: {
         DEFAULT: '535px', // Mobile-ver
         'sm-h': '719px',  // Mobile-hor
         md: '927px',      // Tablet-ver
         lg: '1904px',     // Tablet-hor
-        xl: '1140px',     // Desktop
+        xl: '100%',     // Desktop
+        '2xl': '1440px',     // Desktop
+        '3xl': '1620px',     // Desktop
       },
     },
     extend: {

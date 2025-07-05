@@ -112,23 +112,24 @@ const MainMenu = ({ isMobileMenuOpen, setIsMobileMenuOpen }: MainMenuProps) => {
         </div>
       )}
 
-      <div className="hidden xl:flex flex-col xl:gap-y-3 2xl:gap-y-4 2xl:space-y-4 2xl:mt-12">
+      <div className="hidden xl:flex flex-col xl:gap-y-3 xl:mt-6  2xl:mt-8">
         <div>
           <Button
             text="Получить консультацию"
             active
             onClick={handleOpenForm}
             type="desktopmenu"
+            className="text-button-3xl"
           />
         </div>
         <Text as="a" href="/service">
-          <Button text="Наши услуги" type="desktopmenu" />
+          <Button text="Наши услуги" type="desktopmenu" className="text-button-3xl"/>
         </Text>
         <Text as="a" href="/ourworks">
-          <Button text="Наши работы" type="desktopmenu" />
+          <Button text="Наши работы" type="desktopmenu" className="text-button-3xl"/>
         </Text>
         <Text as="a" href="/questions">
-          <Button text="Частые вопросы" type="desktopmenu"/>
+          <Button text="Частые вопросы" type="desktopmenu" className="text-button-3xl"/>
         </Text>
       </div>
     </div>

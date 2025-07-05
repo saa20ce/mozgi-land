@@ -48,7 +48,7 @@ export default function ServicesPage({
 
 	return (
 		<Layout>
-			<div className='flex flex-col md:flex-row items-center h-[calc(100vh-136px)] w-full overflow-hidden'>
+			<div className='flex flex-col md:flex-row xl:items-start xl:mt-[-12px] items-center xl:h-[calc(100vh-203px)] h-[calc(100vh-136px)] w-full overflow-hidden'>
 				<div className='md:w-1/2 space-y-6'>
 					<MainMenu
 						isMobileMenuOpen={isMobileMenuOpen}

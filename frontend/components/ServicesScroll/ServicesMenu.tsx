@@ -18,7 +18,7 @@ export default function ServicesMenu({ initialServices }: ServicesMenuProps) {
   const [selected, setSelected] = useState<number | null>(null);
 
   return (
-    <div className="w-full md:w-1/2 md:mt-0 h-auto  overflow-y-auto ">    { /* overflow-auto scrollbar-none*/}
+    <div className="w-full md:w-1/2 md:mt-0 h-auto xl:h-full  overflow-y-auto ">    { /* overflow-auto scrollbar-none*/}
 
       <div className="flex flex-col gap-4 custom-scroll rounded-[24px] lg:h-[160px] xl:h-60 2xl:h-96">
         {services.length === 0 ? (

@@ -47,14 +47,14 @@ export default function Portfolio({ initialWorks }: PortfolioProps) {
         />
       </div>
 
-      <div className="flex-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 pb-18 overflow-y-auto h-[calc(100vh-180px)] lg:h-auto lg:max-h-[calc(90vh)] xl:max-h-[calc(60vh)] 2xl:max-h-[calc(65vh)] pl-0 pr-3">{/*overflow-auto scrollbar-none */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 auto-rows-max overflow-y-auto pr-3 flex-grow min-h-0 h-[calc(100vh-180px)] xl:h-[calc(100vh-280px)]">{/*overflow-auto scrollbar-none */}
         {works.length === 0 ? (
           <p className="text-red-500">Нет доступных работ</p>
         ) : (
           filteredWorks.map((project) => (
             <div
             key={project.id}
-            className="relative bg-[#7b7c7e] h-[258px] rounded-lg overflow-hidden transition-opacity duration-300 ease-in-out"
+            className="relative bg-[#7b7c7e] h-[258px] 2xl:h-[374px] rounded-lg overflow-hidden transition-opacity duration-300 ease-in-out"
           >
             <Image
               src={project.image}

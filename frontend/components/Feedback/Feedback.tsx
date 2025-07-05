@@ -90,9 +90,9 @@ const Feedback: React.FC<FeedbackProps> = ({ onSubmit, onClose }) => {
   if (isSubmitted) {
     return (
       <div
-        className="lg:w-[502px] lg:h-[232px] w-[320px] h-[202px] px-6 py-7 rounded-2xl bg-[#1E2D41] flex flex-col gap-4 justify-center items-center text-center"
+        className="lg:w-[502px] lg:h-[232px] w-[320px] h-[202px] px-6 py-7 rounded-2xl bg-[#1E2D41] flex flex-col gap-4 justify-center items-center text-center xl:py-[38px] xl:px-9"
       >
-        <div className="flex items-center gap-4 w-full">
+        <div className="flex items-center xl:items-start gap-4 w-full">
           <Image
             src="/images/done.png"
             alt='Заявка принята'
@@ -100,17 +100,17 @@ const Feedback: React.FC<FeedbackProps> = ({ onSubmit, onClose }) => {
             width={68} 
             height={68}
           />
-          <Text as="p" color="white" weight='semibold' className='lg:text-3xl text-[20px] text-nowrap'>
+          <Text as="p" color="white" weight='semibold' className='lg:text-3xl text-[20px] xl:text-2xl/[32px] text-nowrap'>
             Ваша заявка принята!
           </Text>
           
         </div>
-          <div className="w-full text-left">
-            <Text as="p" color="white" className='lg:text-[18px] text-[14px] px-[2.5px]'>
+          <div className="w-full text-left xl:mt-[-45px] xl:ml-[163px]">
+            <Text as="p" color="white" className='lg:text-[18px] text-sm px-[2.5px]'>
               Мы свяжемся с вами в течение 5 минут
             </Text>
           </div>
-        <div className="flex justify-center w-full">
+        <div className="flex justify-center w-full xl:mt-6">
           <Button text="Хорошо"  active type="feedback" onClick={() => { setIsSubmitted(false); onClose(); }} />
         </div>
       </div>
@@ -120,16 +120,16 @@ const Feedback: React.FC<FeedbackProps> = ({ onSubmit, onClose }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className={`lg:w-[374px] lg:h-[364px] w-[320px] bg-[#1E2D41] py-7 px-6 rounded-2xl flex flex-col gap-9 pb-15 justify-between overflow-y-hidden ${
+      className={`lg:w-[374px] lg:h-[364px] w-[320px] bg-[#1E2D41] py-7 px-6 rounded-2xl flex flex-col gap-9 pb-15 justify-between overflow-y-hidden xl:px-9 xl:py-[38px] ${
         hasErrors ? 'h-auto min-h-[364px] overflow-y-auto' : ''
       }`}
     >
-      <div className="flex flex-col gap-4 h-full">
-        <Text as="label" color="white" size='xl' className='lg:text-[26px] text-lg'>
+      <div className="flex flex-col gap-6 h-full">
+        <Text as="label" color="white" size='xl' className='lg:text-[26px] text-lg xl:text-[24px] xl:font-semibold text-nowrap'>
           Заявка на консультацию
         </Text>
-        <div className="flex flex-col gap-[14px] flex-grow overflow-y-hidden">
-          <Text as="label" size='lg' color="white" className='text-[18px]'>
+        <div className="flex flex-col gap-[12px] flex-grow overflow-y-hidden">
+          <Text as="label" size='lg' color="white" className='text-[18px] xl:mb-[4px]'>
             Введите свои данные:
           </Text>
           <input
@@ -153,7 +153,7 @@ const Feedback: React.FC<FeedbackProps> = ({ onSubmit, onClose }) => {
           />
           {errors.phone && <Text as="p" color="red" size="sm">{errors.phone}</Text>}
           {submitError && <Text as="p" color="red" size="sm">{submitError}</Text>}
-          <Button text="Отправить" active type="feedback" onClick={handleSubmit} className='mt-[18px]' />
+          <Button text="Отправить" active type="feedback" onClick={handleSubmit} className='mt-[18px] xl:mt-[24px]' />
         </div>
       </div>
     </form>

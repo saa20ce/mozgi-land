@@ -4,7 +4,6 @@ import QuestionMenu from "@/components/Questions/QuestionsMenu";
 import { useState } from "react";
 import { getQuestions } from "@/lib/api";
 
-
 interface QuestionApiData {
   id:number;
   title:string;
@@ -45,7 +44,7 @@ export default function QuestionsPage({ initialQuestions }: { initialQuestions: 
 
   return (
     <Layout>
-      <div className="flex flex-col md:flex-row items-center gap-8 h-full w-full">
+      <div className="flex flex-col md:flex-row items-start gap-8 h-full w-full">
         <div className="md:w-1/2 space-y-6">
           <MainMenu
             isMobileMenuOpen={isMobileMenuOpen}

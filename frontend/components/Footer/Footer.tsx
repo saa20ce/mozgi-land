@@ -1,10 +1,10 @@
 import Text from "../Text/Text";
 const Footer = () => {
   return (
-    <footer className="text-white-custom text-sm relative z-10 flex items-center justify-between py-3 px-5 md:p-6 bg-[#1C202DB2] text-gray-400 w-full mt-auto">
-      <div className="container mx-auto max-w-[1140px] px-0 flex items-center justify-between">
-        <Text as="p" weight="medium" size="sm">MOZGI TECH  <span className="font-normal px-[2px]">| 2025</span></Text>
-        <div className="flex space-x-4 font-medium">
+    <footer className="text-white-custom text-sm relative z-10 flex items-center justify-between py-3 px-5 md:p-6 bg-[#1C202DB2] text-gray-400 w-full mt-auto 3xl:py-3 xl:px-12 2xl:px-0 xl:py-4">
+      <div className="container mx-auto xl:max-w-full 2xl:max-w-[1440px] 3xl:max-w-[1490px] px-0 flex items-center justify-between ">
+        <Text as="p" weight="medium" size="sm" className="3xl:text-xl xl:text-[18px]">MOZGI TECH  <span className="font-normal px-[2px]">| 2025</span></Text>
+        <div className="flex space-x-4 font-medium 3xl:text-xl xl:text-[18px]">
           <a href="#">INSTA</a>
           <a href="#">BEHANCE</a>
         </div>
