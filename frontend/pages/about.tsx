@@ -1,13 +1,134 @@
+import Button from '@/components/Button/Button';
+import Feedback from '@/components/Feedback/Feedback';
 import Layout from '@/components/Layout/Layout';
-
+import Text from '@/components/Text/Text';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Home() {
+	const [isFormOpen, setIsFormOpen] = useState(false);
+	const formRef = useRef<HTMLDivElement>(null);
+	const handleOpenForm = () => {
+		setIsFormOpen(true);
+	};
 
-  return (
-    <Layout>
-      <div className="flex flex-col md:flex-row items-center gap-8 h-[80vh] w-full max-h-[784px] bg-[#344F73] mt-[36px] pb-[26px] rounded-[24px]">
+	useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			if (
+				formRef.current &&
+				!formRef.current.contains(event.target as Node)
+			) {
+				setIsFormOpen(false);
+			}
+		};
 
-      </div>
-    </Layout>
-  );
+		if (isFormOpen) {
+			document.addEventListener('mousedown', handleClickOutside);
+		}
+
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside);
+		};
+	}, [isFormOpen]);
+
+	return (
+		<Layout>
+			<section
+				id='about'
+				className='pb-4 px-4 max-w-5xl mx-auto text-white-custom  xl:h-[calc(100vh-218px)] h-[calc(100vh-200px)] overflow-auto'
+			>
+				<Text
+					as='h2'
+					weight='bold'
+					className='text-3xl md:text-4xl mb-6'
+				>
+					Mozgi Tech
+				</Text>
+				<Text className='text-lg mb-8'>
+					Включаем голову — создаём решение. Мы — команда
+					разработчиков и дизайнеров, которая умеет превращать идеи в
+					работающие цифровые продукты.
+				</Text>
+
+				<Text className='text-lg mb-6'>
+					<strong>Mozgi Tech</strong> — это не про потоковые студии.
+					Мы подходим к делу вдумчиво: разбираемся в задаче,
+					предлагаем оптимальные решения и доводим всё до результата.
+				</Text>
+
+				<div className='grid md:grid-cols-2 gap-8 mb-12'>
+					<div>
+						<Text as='h3' className='text-xl font-semibold mb-2'>
+							Что мы делаем:
+						</Text>
+						<ul className='list-disc list-inside space-y-1'>
+							<li>
+								Веб-разработка — от лендингов до полноценных
+								сервисов
+							</li>
+							<li>
+								UI/UX-дизайн — интерфейсы, где удобно и
+								пользователю, и бизнесу
+							</li>
+							<li>
+								Интеграции и автоматизация — улучшаем бизнес
+								процессы, экономим ресурсы
+							</li>
+						</ul>
+					</div>
+
+					<div>
+						<Text as='h3' className='text-xl font-semibold mb-2'>
+							Почему с нами надёжно:
+						</Text>
+						<ul className='list-disc list-inside space-y-1'>
+							<li>
+								Соблюдаем сроки и договоренности — это не
+								обсуждается
+							</li>
+							<li>Погружаемся в проект и всегда на связи</li>
+							<li>
+								Работаем на результат, а не &quot;для
+								галочки&quot;
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<Text
+					as='blockquote'
+					className='italic text-lg border-l-4 border-pink-500 pl-4 mb-8'
+				>
+					Мы не обещаем «волшебную кнопку». Мы честно делаем свою
+					работу — грамотно, прозрачно и с полной отдачей.
+				</Text>
+
+				<div className='text-center mt-12'>
+					<Text className='text-xl font-semibold mb-4'>
+						Есть проект или идея?
+					</Text>
+					<Text className='text-lg mb-6'>
+						Обсудим. Подберём решение, сформируем команду и возьмём
+						на себя реализацию.
+					</Text>
+					<Button
+						text='Получить консультацию'
+						type='mobilemenu'
+						active
+						className='max-w-[385px] m-auto'
+						onClick={handleOpenForm}
+					/>
+				</div>
+				{isFormOpen && (
+					<div className='fixed inset-0 flex items-center justify-center bg-[#00000050] z-[2000] xl:backdrop-blur-md'>
+						<div ref={formRef} className='relative'>
+							<Feedback
+								onSubmit={(data) => console.log(data)}
+								onClose={() => setIsFormOpen(false)}
+							/>
+						</div>
+					</div>
+				)}
+			</section>
+		</Layout>
+	);
 }

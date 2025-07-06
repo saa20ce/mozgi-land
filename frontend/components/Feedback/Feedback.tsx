@@ -120,7 +120,7 @@ const Feedback: React.FC<FeedbackProps> = ({ onSubmit, onClose }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className={`lg:w-[374px] lg:h-[364px] w-[320px] bg-[#1E2D41] py-7 px-6 rounded-2xl flex flex-col gap-9 pb-15 justify-between overflow-y-hidden xl:px-9 xl:py-[38px] ${
+      className={`lg:w-[374px] w-[320px] bg-[#1E2D41] py-7 px-6 rounded-2xl flex flex-col gap-9 pb-15 justify-between overflow-y-hidden xl:px-9 xl:py-[38px] ${
         hasErrors ? 'h-auto min-h-[364px] overflow-y-auto' : ''
       }`}
     >

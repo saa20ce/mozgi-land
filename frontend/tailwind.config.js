@@ -36,7 +36,7 @@ module.exports = {
         DEFAULT: '535px', // Mobile-ver
         'sm-h': '719px',  // Mobile-hor
         md: '927px',      // Tablet-ver
-        lg: '1904px',     // Tablet-hor
+        // lg: '1904px',     // Tablet-hor
         xl: '100%',     // Desktop
         '2xl': '1440px',     // Desktop
         '3xl': '1620px',     // Desktop

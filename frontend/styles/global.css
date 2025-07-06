@@ -80,3 +80,9 @@ body {
 .text-button-3xl {
 	@apply 3xl:text-[18px]/[28px] 3xl:font-medium
 }
+
+@layer utilities {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+}

@@ -11,9 +11,7 @@ export default function Home() {
     <Layout>
       <div className="text-white-custom 2xl:pl-[95px] relative flex flex-col xl:flex-row justify-between xl:pt-3 2xl:pt-10 items-center w-full ">
         <div
-          className={`w-full md:w-[704px] xl:w-[540px] h-[180px] 2xl:pt-[16px] z-10 xl:pt-8 3xl:pt-12 ${
-            isMobileMenuOpen ? 'hidden xl:block' : 'block'
-          }`}
+          className={`w-full md:w-[704px] xl:w-[540px] h-[180px] 2xl:pt-[16px] z-10 xl:pt-8 3xl:pt-12 `}
         >
           <h1 className="text-center text-[28px] md:text-[42px] xl:text-[36px] 2xl:text-[36px] xl:text-left font-bold">
             Разработка и дизайн
@@ -44,9 +42,7 @@ export default function Home() {
       </div>
 
       <div
-        className={`absolute bottom-[6vh] left-0  xl:left-auto xl:right-[calc(50%-600px)] w-full flex justify-center xl:justify-end z-0 ${
-          isMobileMenuOpen ? 'hidden xl:flex' : 'flex'
-        }`}
+        className={`absolute bottom-[6vh] left-0  xl:left-auto xl:right-[calc(50%-600px)] w-full flex justify-center xl:justify-end z-0 `}
       >
         <Image
           src="/images/Man.png"

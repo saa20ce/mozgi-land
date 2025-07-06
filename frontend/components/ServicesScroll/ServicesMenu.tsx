@@ -18,9 +18,10 @@ export default function ServicesMenu({ initialServices }: ServicesMenuProps) {
   const [selected, setSelected] = useState<number | null>(null);
 
   return (
-    <div className="w-full md:w-1/2 md:mt-0 h-auto xl:h-full  overflow-y-auto ">    { /* overflow-auto scrollbar-none*/}
-
-      <div className="flex flex-col gap-4 custom-scroll rounded-[24px] lg:h-[160px] xl:h-60 2xl:h-96">
+    <div className="w-full xl:w-1/2 md:mt-0 h-auto xl:flex-center xl:h-full  overflow-y-auto xl:max-w-[420px] 2xl:max-w-[620px] ">    { /* overflow-auto scrollbar-none*/}
+      <div className="w-full max-h-full overflow-y-auto pb-3">
+      <div className="flex flex-col justify-center w-full  overflow-auto lg:h-100 2xl:h-full gap-2 2xl:pl-[100px]">
+        
         {services.length === 0 ? (
           <p className="text-red-500">Нет доступных сервисов</p>
         ) : (
@@ -59,6 +60,7 @@ export default function ServicesMenu({ initialServices }: ServicesMenuProps) {
             </div>
           ))
         )}
+        </div>
       </div>
 
       {/* <div className="text-gray-400 text-sm text-center mt-6">

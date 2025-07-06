@@ -26,28 +26,31 @@ export default function Portfolio({ initialWorks }: PortfolioProps) {
       : works.filter((work) => work.category === selectedCategory);
   return (
     <div className="w-full flex flex-col gap-3 rounded-[24px] ">
-      <div className="flex justify-center gap-2 lg:gap-6">
+      <div className="flex mx-auto justify-center gap-2 lg:gap-2 w-full xl:max-w-[560px]">
         <Button
           text="Все"
           onClick={() => setSelectedCategory("все")}
           active={selectedCategory === "все"}
           type="portfolio"
+          className="grow"
         />
         <Button
           text="Дизайн"
           onClick={() => setSelectedCategory("дизайн")}
           active={selectedCategory === "дизайн"}
           type="portfolio"
+          className="grow"
         />
         <Button
           text="Разработка"
           onClick={() => setSelectedCategory("разработка")}
           active={selectedCategory === "разработка"}
           type="portfolio"
+          className="grow"
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 auto-rows-max overflow-y-auto pr-3 flex-grow min-h-0 h-[calc(100vh-180px)] xl:h-[calc(100vh-280px)]">{/*overflow-auto scrollbar-none */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 auto-rows-max overflow-y-auto pr-3 flex-grow min-h-0 h-[calc(100vh-255px)]  md:h-[calc(100vh-270px)] xl:h-[calc(100vh-268px)] pb-3">{/*overflow-auto scrollbar-none */}
         {works.length === 0 ? (
           <p className="text-red-500">Нет доступных работ</p>
         ) : (

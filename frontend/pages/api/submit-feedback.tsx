@@ -22,11 +22,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   }
 
   const { phone, name }: FeedbackData = req.body;
-
+  
   if (!phone || !name) {
     return res.status(400).json({ message: 'Phone and name are required' });
   }
-
+  
   const backendUrl = process.env.DJANGO_API_URL;
   if (!backendUrl || typeof backendUrl !== 'string') {
     return res.status(500).send(`

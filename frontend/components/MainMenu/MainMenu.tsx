@@ -4,13 +4,15 @@ import { useRouter } from "next/router";
 import Feedback from "../Feedback/Feedback";
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import burgerIcon from '@/public/images/burger.svg'
 
 interface MainMenuProps {
   isMobileMenuOpen: boolean;
   setIsMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  burger?: boolean 
 }
 
-const MainMenu = ({ isMobileMenuOpen, setIsMobileMenuOpen }: MainMenuProps) => {
+const MainMenu = ({ isMobileMenuOpen, setIsMobileMenuOpen, burger = false}: MainMenuProps) => {
   const router = useRouter();
   const isHomePage = router.pathname === "/";
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -22,6 +24,7 @@ const MainMenu = ({ isMobileMenuOpen, setIsMobileMenuOpen }: MainMenuProps) => {
 
   const handleOpenForm = () => {
     setIsFormOpen(true);
+    handleMenuToggle(false)
   };
 
   useEffect(() => {
@@ -42,7 +45,7 @@ const MainMenu = ({ isMobileMenuOpen, setIsMobileMenuOpen }: MainMenuProps) => {
 
   return (
     <div className="relative">
-      {isHomePage && !isMobileMenuOpen && (
+      {!burger && isHomePage && (
         <div className="xl:hidden fixed bottom-[68px] md:bottom-20 left-50 -translate-x-1/2 w-full px-5 flex justify-center z-50">
           <Button
             text="Открыть меню"
@@ -53,8 +56,14 @@ const MainMenu = ({ isMobileMenuOpen, setIsMobileMenuOpen }: MainMenuProps) => {
         </div>
       )}
 
+      {burger &&  
+        <button
+          onClick={() => handleMenuToggle(true)}
+          className="flex-center"
+        ><Image alt="Бургер меню" width={32} height={32} src={burgerIcon}/></button>}
+
       {isMobileMenuOpen && (
-        <div className="xl:hidden fixed inset-0 top-8 h-full flex items-center justify-center z-[1000]">
+        <div className="xl:hidden fixed inset-0 z-[1000] backdrop-blur-lg flex items-center justify-center">
           <div className="relative w-full max-w-[320px] md:max-w-[462px] h-[296px] md:h-[364px] mx-auto px-0">
             <button
               className="absolute -top-12 right-0 md:right-0 text-white text-2xl w-8 h-8 flex items-center justify-center rounded-full bg-gray-600 hover:bg-gray-700 z-[1001]"
@@ -99,13 +108,20 @@ const MainMenu = ({ isMobileMenuOpen, setIsMobileMenuOpen }: MainMenuProps) => {
                   className="w-full"
                 />
               </Text>
+              <Text as="a" href="/about" className="block w-full">
+                <Button
+                  text="О нас"
+                  type="mobilemenu"
+                  className="w-full"
+                />
+              </Text>
             </div>
           </div>
         </div>
       )}
 
-      {isFormOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-[#00000050] z-[2000] xl:backdrop-blur-md">
+      { isFormOpen && (
+        <div className="fixed inset-0 flex items-center justify-center backdrop-blur-lg z-[2000] xl:backdrop-blur-md">
           <div ref={formRef} className="relative">
             <Feedback onSubmit={(data) => console.log(data)} onClose={()=> setIsFormOpen(false)} />
           </div>
@@ -130,6 +146,9 @@ const MainMenu = ({ isMobileMenuOpen, setIsMobileMenuOpen }: MainMenuProps) => {
         </Text>
         <Text as="a" href="/questions">
           <Button text="Частые вопросы" type="desktopmenu" className="text-button-3xl"/>
+        </Text>
+        <Text as="a" href='/about'>
+          <Button text="О нас" type="desktopmenu" className="text-button-3xl"/>
         </Text>
       </div>
     </div>
