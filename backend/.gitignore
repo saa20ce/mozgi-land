@@ -2,3 +2,4 @@
 /core/migrations/__pycache__/
 /main/__pycache__/
 db.sqlite3
+.env

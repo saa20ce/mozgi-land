@@ -7,8 +7,9 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, CreateAPIView
 import logging
+from telegram_notify import send_telegram_message
+import asyncio
 # Create your views here.
-
 
 
 class WorksListView(ListAPIView):
@@ -41,6 +42,19 @@ logger = logging.getLogger(__name__)
 class FeedbackSubmissionView(CreateAPIView):
     serializer_class = FeedbackSubmissionSerializer
     permission_classes = [AllowAny]
+
+    def perform_create(self, serializer):
+        instance = serializer.save()
+        message = (
+            f"📥 Новая заявка на консультацию\n\n"
+            f"👤 ФИО: {instance.name}\n"
+            f"📞 Телефон: {instance.phone}\n"
+            f"🕒 Время: {instance.created_at.strftime('%Y-%m-%d %H:%M:%S')}"
+        )
+        try:
+            asyncio.run(send_telegram_message(message))
+        except Exception as e:
+            print(f"Ошибка отправки в Telegram: {e}")
 
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
