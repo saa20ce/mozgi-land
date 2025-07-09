@@ -2,9 +2,17 @@ import Image from 'next/image';
 
 import MainMenu from '../MainMenu/MainMenu';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 const Header = () => {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+	const router = useRouter();
+  const { locale, asPath } = router;
+
+	const toggleLocale = () => {
+    const nextLocale = locale === 'ru' ? 'en' : 'ru';
+    router.push(asPath, asPath, { locale: nextLocale });
+  };
 
 	return (
 		<header className='flex items-center justify-between p-5 bg-[#F6F6F633] w-full h-[64px] rounded-full text-white-custom'>
@@ -17,14 +25,16 @@ const Header = () => {
 			</div>
 			<div className='flex-center gap-2'>
 				<div className='rounded-full'>
-					<Image
-						src='/images/icon-globe.png'
-						alt='Смена языка'
-						width={32}
-						height={32}
-					/>
+					<button onClick={toggleLocale} className='rounded-full focus:outline-none flex-center'>
+          <Image
+            src='/images/icon-globe.png'
+            alt='Смена языка'
+            width={32}
+            height={32}
+          />
+        </button>
 				</div>
-				<div className='xl:hidden'>
+				<div>
 					<MainMenu
 						isMobileMenuOpen={isMobileMenuOpen}
 						setIsMobileMenuOpen={setIsMobileMenuOpen}
