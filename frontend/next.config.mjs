@@ -6,7 +6,7 @@ const { i18n } = pkg;
 const nextConfig = {
   i18n,
   images: {
-    domains: ['127.0.0.1'],
+    domains: ['127.0.0.1', 'localhost'],
   },
 };
 

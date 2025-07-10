@@ -1,6 +1,7 @@
 // frontend/components/Text.tsx
 import React from "react";
 import clsx from "clsx";
+import Link from "next/link";
 type TextProps = {
   children: React.ReactNode;
   className?: string;
@@ -9,6 +10,7 @@ type TextProps = {
   color?: "white" | "gray" | "black" | "blue" | "red" | "green" | 'white-custom';
   weight?: "light" | "normal" | "medium" | "semibold" | "bold";
   href?: string;
+  locale?: string;
 };
 
 const Text = ({
@@ -19,6 +21,7 @@ const Text = ({
   color = "white-custom",
   weight = "normal",
   href,
+  locale
 }: TextProps) => {
   const textSize = {
     msm: "text-[15px]",
@@ -48,8 +51,9 @@ const Text = ({
   };
   if (href) {
     return (
-      <a
+      <Link
         href={href}
+        locale={locale}
         className={clsx(
           textSize[size],
           className,
@@ -57,7 +61,7 @@ const Text = ({
         )}
       >
         {children}
-      </a>
+      </Link>
     );
   }
   return (

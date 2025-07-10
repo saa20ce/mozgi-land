@@ -3,10 +3,14 @@ import Feedback from '@/components/Feedback/Feedback';
 import Layout from '@/components/Layout/Layout';
 import Text from '@/components/Text/Text';
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export default function Home() {
 	const [isFormOpen, setIsFormOpen] = useState(false);
 	const formRef = useRef<HTMLDivElement>(null);
+	const { t } = useTranslation('about');
+
 	const handleOpenForm = () => {
 		setIsFormOpen(true);
 	};
@@ -41,55 +45,38 @@ export default function Home() {
 					weight='bold'
 					className='text-3xl md:text-4xl mb-6'
 				>
-					Mozgi Tech
+					{t('heading')}
 				</Text>
-				<Text className='text-lg mb-8'>
-					Включаем голову — создаём решение. Мы — команда
-					разработчиков и дизайнеров, которая умеет превращать идеи в
-					работающие цифровые продукты.
-				</Text>
+				<Text className='text-lg mb-8'>{t('intro')}</Text>
 
-				<Text className='text-lg mb-6'>
-					<strong>Mozgi Tech</strong> — это не про потоковые студии.
-					Мы подходим к делу вдумчиво: разбираемся в задаче,
-					предлагаем оптимальные решения и доводим всё до результата.
-				</Text>
+				<Text className='text-lg mb-6'>{t('values')}</Text>
 
 				<div className='grid md:grid-cols-2 gap-8 mb-12'>
 					<div>
 						<Text as='h3' className='text-xl font-semibold mb-2'>
-							Что мы делаем:
+							{t('what_we_do_title')}
 						</Text>
 						<ul className='list-disc list-inside space-y-1'>
-							<li>
-								Веб-разработка — от лендингов до полноценных
-								сервисов
-							</li>
-							<li>
-								UI/UX-дизайн — интерфейсы, где удобно и
-								пользователю, и бизнесу
-							</li>
-							<li>
-								Интеграции и автоматизация — улучшаем бизнес
-								процессы, экономим ресурсы
-							</li>
+							{(
+								t('what_we_do_list', {
+									returnObjects: true,
+								}) as []
+							).map((item: string, i: number) => (
+								<li key={i}>{item}</li>
+							))}
 						</ul>
 					</div>
 
 					<div>
 						<Text as='h3' className='text-xl font-semibold mb-2'>
-							Почему с нами надёжно:
+							{t('why_us_title')}
 						</Text>
 						<ul className='list-disc list-inside space-y-1'>
-							<li>
-								Соблюдаем сроки и договоренности — это не
-								обсуждается
-							</li>
-							<li>Погружаемся в проект и всегда на связи</li>
-							<li>
-								Работаем на результат, а не &quot;для
-								галочки&quot;
-							</li>
+							{(
+								t('why_us_list', { returnObjects: true }) as []
+							).map((item: string, i: number) => (
+								<li key={i}>{item}</li>
+							))}
 						</ul>
 					</div>
 				</div>
@@ -98,20 +85,16 @@ export default function Home() {
 					as='blockquote'
 					className='italic text-lg border-l-4 border-pink-500 pl-4 mb-8'
 				>
-					Мы не обещаем «волшебную кнопку». Мы честно делаем свою
-					работу — грамотно, прозрачно и с полной отдачей.
+					{t('quote')}
 				</Text>
 
 				<div className='text-center mt-12'>
 					<Text className='text-xl font-semibold mb-4'>
-						Есть проект или идея?
+						{t('project_question')}
 					</Text>
-					<Text className='text-lg mb-6'>
-						Обсудим. Подберём решение, сформируем команду и возьмём
-						на себя реализацию.
-					</Text>
+					<Text className='text-lg mb-6'>{t('project_invite')}</Text>
 					<Button
-						text='Получить консультацию'
+						text={t('consult_button')}
 						type='mobilemenu'
 						active
 						className='max-w-[385px] m-auto'
@@ -121,14 +104,19 @@ export default function Home() {
 				{isFormOpen && (
 					<div className='fixed inset-0 flex items-center justify-center bg-[#00000050] z-[2000] xl:backdrop-blur-md'>
 						<div ref={formRef} className='relative'>
-							<Feedback
-								onSubmit={(data) => console.log(data)}
-								onClose={() => setIsFormOpen(false)}
-							/>
+							<Feedback onClose={() => setIsFormOpen(false)} />
 						</div>
 					</div>
 				)}
 			</section>
 		</Layout>
 	);
+}
+
+export async function getStaticProps({ locale }: { locale: string }) {
+	return {
+		props: {
+			...(await serverSideTranslations(locale, ['about', 'common'])),
+		},
+	};
 }

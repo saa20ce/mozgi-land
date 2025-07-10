@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Text from "../Text/Text";
 const Footer = () => {
   return (
@@ -5,8 +6,8 @@ const Footer = () => {
       <div className="container mx-auto sm:max-w-[544px] md:max-w-[720px] xl:max-w-full 2xl:max-w-[1440px] 3xl:max-w-[1490px] px-0 flex items-center justify-between ">
         <Text as="p" weight="medium" size="sm" className="3xl:text-xl xl:text-[18px]">MOZGI TECH  <span className="font-normal px-[2px]">| 2025</span></Text>
         <div className="flex space-x-4 font-medium 3xl:text-xl xl:text-[18px]">
-          <a href="#">INSTA</a>
-          <a href="#">BEHANCE</a>
+          <Link href="#">INSTA</Link>
+          <Link href="#">BEHANCE</Link>
         </div>
       </div>
     </footer>

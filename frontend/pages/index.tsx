@@ -8,7 +8,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 export default function Home() {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-	const { t } = useTranslation('home');
+	const { t } = useTranslation('common');
 
 	return (
 		<Layout>
@@ -86,7 +86,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['home', 'menu'])),
+      ...(await serverSideTranslations(locale, ['common'])),
     },
   };
 }

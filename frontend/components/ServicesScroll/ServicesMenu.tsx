@@ -1,69 +1,96 @@
-import { useState } from "react";
-import Button from "@/components/Button/Button";
-import { FaCog } from "react-icons/fa";
-import Text from "../Text/Text";
+import { useEffect, useState } from 'react';
+import Button from '@/components/Button/Button';
+import { FaCog } from 'react-icons/fa';
+import Text from '../Text/Text';
+import { useTranslation } from 'next-i18next';
+import { getServices } from '@/lib/api';
 
 interface Service {
-  id: number;
-  title: string;
-  categories: string[];
+	id: number;
+	title: string;
+	categories: string[];
 }
 
 interface ServicesMenuProps {
-  initialServices: Service[];
+	initialServices: Service[];
 }
 
 export default function ServicesMenu({ initialServices }: ServicesMenuProps) {
-  const [services] = useState<Service[]>(initialServices);
-  const [selected, setSelected] = useState<number | null>(null);
+	const [services, setServices] = useState<Service[]>(initialServices);
+	const [selected, setSelected] = useState<number | null>(null);
+	const { t, i18n } = useTranslation('common');
 
-  return (
-    <div className="w-full xl:w-1/2 md:mt-0 h-auto xl:flex-center xl:h-full  overflow-y-auto xl:max-w-[420px] 2xl:max-w-[620px] ">    { /* overflow-auto scrollbar-none*/}
-      <div className="w-full max-h-full overflow-y-auto pb-3">
-      <div className="flex flex-col justify-center w-full  overflow-auto lg:h-100 2xl:h-full gap-2 2xl:pl-[100px]">
-        
-        {services.length === 0 ? (
-          <p className="text-red-500">Нет доступных сервисов</p>
-        ) : (
-          services.map((service, index) => (
-            <div
-              key={service.id}
-              className="p-3 bg-[#3B404F] text-white rounded-xl flex items-center justify-between md:flex-row md:items-center gap-4 "
-            >
-              <div className="flex-1">
-                <Text
-                  as="h2"
-                  size="md"
-                  weight="semibold"
-                  className="font-semibold flex items-center gap-2"
-                >
-                  <FaCog className="text-white text-2xl" />
-                  {service.title}
-                </Text>
-                <ul className="text-sm text-gray-300 mt-1 ml-2 space-y-1">
-                  {service.categories.map((category, i) => (
-                    <li key={i} className="list-inside list-disc">
-                      <Text as="span" size="sm" color="white">
-                        {category}
-                      </Text>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <Button
-                text="Открыть"
-                type="service"
-                active={selected === index}
-                onClick={() => setSelected(index)}
-                
-              />
-            </div>
-          ))
-        )}
-        </div>
-      </div>
+	useEffect(() => {
+		async function fetchWorks() {
+			const data = await getServices(i18n.language);
+			const formattedServices = data.map((item) => ({
+				id: item.id,
+				title: item.title,
+				categories: item.items || [],
+			}));
+			setServices(formattedServices);
+		}
 
-      {/* <div className="text-gray-400 text-sm text-center mt-6">
+		fetchWorks();
+	}, [i18n.language]);
+
+	return (
+		<div className='w-full xl:w-1/2 md:mt-0 h-auto xl:flex-center xl:h-full  overflow-y-auto xl:max-w-[420px] 2xl:max-w-[620px] '>
+			{' '}
+			{/* overflow-auto scrollbar-none*/}
+			<div className='w-full max-h-full overflow-y-auto pb-3'>
+				<div className='flex flex-col justify-center w-full  overflow-auto lg:h-100 2xl:h-full gap-2 2xl:pl-[100px]'>
+					{services.length === 0 ? (
+						<p className='text-red-500 flex-center'>
+							{t('servicesMenu.noService')}
+						</p>
+					) : (
+						services.map((service, index) => (
+							<div
+								key={service.id}
+								className='p-3 bg-[#3B404F] text-white rounded-xl flex items-center justify-between md:flex-row md:items-center gap-4 '
+							>
+								<div className='flex-1'>
+									<Text
+										as='h2'
+										size='md'
+										weight='semibold'
+										className='font-semibold flex items-center gap-2'
+									>
+										<FaCog className='text-white text-2xl' />
+										{service.title}
+									</Text>
+									<ul className='text-sm text-gray-300 mt-1 ml-2 space-y-1'>
+										{service.categories.map(
+											(category, i) => (
+												<li
+													key={i}
+													className='list-inside list-disc'
+												>
+													<Text
+														as='span'
+														size='sm'
+														color='white'
+													>
+														{category}
+													</Text>
+												</li>
+											),
+										)}
+									</ul>
+								</div>
+								<Button
+									text=	{t('servicesMenu.open')}
+									type='service'
+									active={selected === index}
+									onClick={() => setSelected(index)}
+								/>
+							</div>
+						))
+					)}
+				</div>
+			</div>
+			{/* <div className="text-gray-400 text-sm text-center mt-6">
         <Text as="p" color="white" size="lg" weight="medium">
           Технологии которые мы используем:
         </Text>
@@ -94,7 +121,7 @@ export default function ServicesMenu({ initialServices }: ServicesMenuProps) {
             </div>
           ))}
         </div> */}
-      {/* </div> */}
-    </div>
-  );
+			{/* </div> */}
+		</div>
+	);
 }

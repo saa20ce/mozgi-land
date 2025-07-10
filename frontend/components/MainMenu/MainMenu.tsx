@@ -23,7 +23,7 @@ const MainMenu = ({
 	const [isFormOpen, setIsFormOpen] = useState(false);
 	const formRef = useRef<HTMLDivElement>(null); // Ссылка на контейнер формы
 	const modalMenuRef = useRef<HTMLDivElement>(null);
-  const { t } = useTranslation('menu');
+	const { t } = useTranslation('common');
 
 	const handleMenuToggle = (isOpen: boolean) => {
 		setIsMobileMenuOpen(isOpen);
@@ -120,6 +120,7 @@ const MainMenu = ({
 							<Text
 								as='a'
 								href='/service'
+								locale={router.locale}
 								className='block w-full'
 							>
 								<Button
@@ -131,6 +132,7 @@ const MainMenu = ({
 							<Text
 								as='a'
 								href='/ourworks'
+								locale={router.locale}
 								className='block w-full'
 							>
 								<Button
@@ -142,6 +144,7 @@ const MainMenu = ({
 							<Text
 								as='a'
 								href='/questions'
+								locale={router.locale}
 								className='block w-full'
 							>
 								<Button
@@ -150,7 +153,12 @@ const MainMenu = ({
 									className='w-full'
 								/>
 							</Text>
-							<Text as='a' href='/about' className='block w-full'>
+							<Text
+								as='a'
+								href='/about'
+								locale={router.locale}
+								className='block w-full'
+							>
 								<Button
 									text={t('aboutUs')}
 									type='mobilemenu'
@@ -165,9 +173,7 @@ const MainMenu = ({
 			{isFormOpen && (
 				<div className='fixed inset-0 flex items-center justify-center backdrop-blur-lg z-[2000] xl:backdrop-blur-md'>
 					<div ref={formRef} className='relative'>
-						<Feedback
-							onClose={() => setIsFormOpen(false)}
-						/>
+						<Feedback onClose={() => setIsFormOpen(false)} />
 					</div>
 				</div>
 			)}
