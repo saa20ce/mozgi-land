@@ -15,27 +15,40 @@ import asyncio
 class WorksListView(ListAPIView):
     serializer_class = WorksSerializer
     permission_classes=[AllowAny]
+
     def get_queryset(self):
         queryset = Works.objects.all()
         print(f"Queryset:{queryset}")
         print(f"User: {self.request.user}")
         return queryset
+
+    def get_serializer_context(self):
+        return {'lang': self.request.query_params.get('lang', 'ru')}
+
 class QuestionsListView(ListAPIView):
     serializer_class = QuestionsSerializer
     permission_classes=[AllowAny]
+
     def get_queryset(self):
         queryset = Questions.objects.all()
         print(f"Queryset:{queryset}")
         return queryset
+    
+    def get_serializer_context(self):
+        return {'lang': self.request.query_params.get('lang', 'ru')}
 
 
 class ServicesListView(ListAPIView):
     serializer_class = ServicesSerializer
     permission_classes=[AllowAny]
+    
     def get_queryset(self):
         queryset = Services.objects.all()
         print(f"Queryset:{queryset}")
         return queryset
+    
+    def get_serializer_context(self):
+        return {'lang': self.request.query_params.get('lang', 'ru')}
     
 logger = logging.getLogger(__name__)
 
