@@ -36,6 +36,14 @@ const Feedback: React.FC<FeedbackProps> = ({ onSubmit, onClose }) => {
 		return formatted;
 	};
 
+	const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const inputValue = e.target.value;
+		const filteredValue = inputValue.replace(/[^А-Яа-яЁёA-Za-z\s\-]/g, '');
+		setName(filteredValue);
+		setErrors((prev) => ({ ...prev, name: undefined }));
+		setSubmitError(null);
+	};
+
 	const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const inputValue = e.target.value;
 		const formattedPhone = formatPhoneNumber(inputValue);
@@ -47,13 +55,13 @@ const Feedback: React.FC<FeedbackProps> = ({ onSubmit, onClose }) => {
 	const validateForm = (): boolean => {
 		const newErrors: { name?: string; phone?: string } = {};
 
-		const nameWords = name.trim().split(/\s+/);
-		if (nameWords.length !== 3) {
+		if (name.trim().length < 2) {
 			newErrors.name = t('feedback.errorName');
 		}
 
 		const phoneRegex = /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/;
-		if (!phoneRegex.test(phone)) {
+		
+		if (!phoneRegex.test(phone.trim())) {
 			newErrors.phone = t('feedback.errorPhone');
 		}
 
@@ -65,7 +73,7 @@ const Feedback: React.FC<FeedbackProps> = ({ onSubmit, onClose }) => {
 		e.preventDefault();
 		if (validateForm()) {
 			try {
-				const response = await fetch('/api/submit-feedback', {
+				const response = await fetch('/api/submit-feedback/', {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',
@@ -106,7 +114,7 @@ const Feedback: React.FC<FeedbackProps> = ({ onSubmit, onClose }) => {
 						weight='semibold'
 						className='lg:text-3xl text-[20px] xl:text-2xl/[32px] text-nowrap'
 					>
-						 {t('feedback.submitSuccess')}
+						{t('feedback.submitSuccess')}
 					</Text>
 				</div>
 				<div className='w-full text-left xl:mt-[-45px] xl:ml-[163px]'>
@@ -115,7 +123,7 @@ const Feedback: React.FC<FeedbackProps> = ({ onSubmit, onClose }) => {
 						color='white'
 						className='lg:text-[18px] text-sm px-[2.5px]'
 					>
-						 {t('feedback.weWillContact')}
+						{t('feedback.weWillContact')}
 					</Text>
 				</div>
 				<div className='flex justify-center w-full xl:mt-6'>
@@ -147,7 +155,7 @@ const Feedback: React.FC<FeedbackProps> = ({ onSubmit, onClose }) => {
 					size='xl'
 					className='lg:text-[26px] text-lg xl:text-[24px] xl:font-semibold text-nowrap'
 				>
-					 {t('feedback.consultationRequest')}
+					{t('feedback.consultationRequest')}
 				</Text>
 				<div className='flex flex-col gap-[12px] flex-grow overflow-y-hidden'>
 					<Text
@@ -161,11 +169,7 @@ const Feedback: React.FC<FeedbackProps> = ({ onSubmit, onClose }) => {
 					<input
 						type='text'
 						value={name}
-						onChange={(e) => {
-							setName(e.target.value);
-							setErrors((prev) => ({ ...prev, name: undefined }));
-							setSubmitError(null);
-						}}
+						onChange={handleNameChange}
 						placeholder={t('feedback.fioPlaceholder')}
 						className='py-[10px] px-4 rounded-[16px] bg-[#2A3A4E] text-white outline-none w-full box-border'
 					/>

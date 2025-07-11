@@ -51,3 +51,4 @@ export const getServices = async (lang = 'ru'): Promise<ServiceApiData[]> => {
 };
 
 export default api;
+   

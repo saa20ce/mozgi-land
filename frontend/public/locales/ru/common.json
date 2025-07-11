@@ -32,13 +32,13 @@
 	"feedback": {
 		"consultationRequest": "Заявка на консультацию",
 		"enterYourData": "Введите свои данные:",
-		"fioPlaceholder": "ФИО",
+		"fioPlaceholder": "Имя",
 		"phonePlaceholder": "+7 (xxx) xxx-xx-xx",
 		"submit": "Отправить",
 		"submitSuccess": "Ваша заявка принята!",
 		"weWillContact": "Мы свяжемся с вами в течение 5 минут",
 		"ok": "Хорошо",
-		"errorName": "Введите ФИО (фамилия, имя, отчество через пробел)",
+		"errorName": "Введите корректное имя(минимум 2 буквы)",
 		"errorPhone": "Введите корректный номер в формате +7 (xxx) xxx-xx-xx",
 		"errorSubmit": "Ошибка при отправке данных. Попробуйте позже."
 	}

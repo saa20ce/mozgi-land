@@ -32,13 +32,13 @@
 	"feedback": {
 		"consultationRequest": "Consultation Request",
 		"enterYourData": "Enter your data:",
-		"fioPlaceholder": "Full Name",
+		"fioPlaceholder": "Name",
 		"phonePlaceholder": "+7 (xxx) xxx-xx-xx",
 		"submit": "Submit",
 		"submitSuccess": "Your application is accepted!",
 		"weWillContact": "We will contact you within 5 minutes",
 		"ok": "OK",
-		"errorName": "Please enter full name (last, first, middle name separated by spaces)",
+		"errorName": "Enter a valid name (minimum of 2 letters)",
 		"errorPhone": "Please enter a valid phone number in format +7 (xxx) xxx-xx-xx",
 		"errorSubmit": "Error submitting data. Please try again later."
 	}

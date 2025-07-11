@@ -5,6 +5,7 @@ import Feedback from '../Feedback/Feedback';
 import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import burgerIcon from '@/public/images/burger.svg';
+import closeIcon from '@/public/images/close.svg'
 import { useTranslation } from 'next-i18next';
 
 interface MainMenuProps {
@@ -96,11 +97,11 @@ const MainMenu = ({
 						ref={modalMenuRef}
 					>
 						<button
-							className='absolute -top-12 right-0 md:right-0 text-white text-2xl w-8 h-8 flex items-center justify-center rounded-full bg-gray-600 hover:bg-gray-700 z-[1001]'
+							className="absolute -top-12 right-0 md:right-0 w-8 h-8 hover:scale-[1.15] transition-transform duration-500 z-[1001]"
 							onClick={() => handleMenuToggle(false)}
 						>
 							<Image
-								src='/images/icon.png'
+								src={closeIcon}
 								alt={t('closeMenuAlt')}
 								width={32}
 								height={32}
@@ -113,7 +114,7 @@ const MainMenu = ({
 									text={t('consultation')}
 									type='mobilemenu'
 									active
-									className='w-full'
+									className='w-full xl:transition-transform xl:duration-300 xl:hover:scale-[1.02]'
 									onClick={handleOpenForm}
 								/>
 							</div>
@@ -126,7 +127,7 @@ const MainMenu = ({
 								<Button
 									text={t('ourServices')}
 									type='mobilemenu'
-									className='w-full'
+									className='w-full xl:transition-transform xl:duration-300 xl:hover:scale-[1.02]'
 								/>
 							</Text>
 							<Text
@@ -138,7 +139,7 @@ const MainMenu = ({
 								<Button
 									text={t('ourWorks')}
 									type='mobilemenu'
-									className='w-full'
+									className='w-full xl:transition-transform xl:duration-300 xl:hover:scale-[1.02]'
 								/>
 							</Text>
 							<Text
@@ -150,19 +151,19 @@ const MainMenu = ({
 								<Button
 									text={t('faq')}
 									type='mobilemenu'
-									className='w-full'
+									className='w-full xl:transition-transform xl:duration-300 xl:hover:scale-[1.02]'
 								/>
 							</Text>
 							<Text
 								as='a'
 								href='/about'
 								locale={router.locale}
-								className='block w-full'
+								className='block w-full '
 							>
 								<Button
 									text={t('aboutUs')}
 									type='mobilemenu'
-									className='w-full'
+									className='w-full xl:transition-transform xl:duration-300 xl:hover:scale-[1.02]'
 								/>
 							</Text>
 						</div>
