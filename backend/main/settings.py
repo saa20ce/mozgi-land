@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-a(!9vncb%kuh7uiqez-f*xihe&=10)kgh+3s@wy)0isf*hg5=1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'mozgi.tech',
+]
 
 
 # Application definition
@@ -56,6 +60,7 @@ MIDDLEWARE = [
 ]
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # URL вашего фронтенда
+    'https://mozgi.tech',
 ]
 
 ROOT_URLCONF = 'main.urls'

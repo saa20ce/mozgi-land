@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import Button from '../Button/Button';
 import Text from '../Text/Text';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
@@ -19,7 +18,6 @@ interface PortfolioProps {
 
 export default function Portfolio({ initialWorks }: PortfolioProps) {
 	const [works, setWorks] = useState<Work[]>(initialWorks);
-	const [selectedCategory, setSelectedCategory] = useState('все');
 	const { t, i18n } = useTranslation('common');
 
 	useEffect(() => {
@@ -38,45 +36,15 @@ export default function Portfolio({ initialWorks }: PortfolioProps) {
 		fetchWorks();
 	}, [i18n.language]);
 
-	const filteredWorks =
-		selectedCategory === 'все'
-			? works
-			: works.filter((work) => work.category === selectedCategory);
-
 	return (
-		<div className='w-full flex flex-col gap-3 rounded-[24px] '>
-			<div className='flex mx-auto justify-center gap-2 lg:gap-2 w-full xl:max-w-[560px]'>
-				<Button
-					text={t('portfolioBtn.all')}
-					onClick={() => setSelectedCategory('все')}
-					active={selectedCategory === 'все'}
-					type='portfolio'
-					className='grow'
-				/>
-				<Button
-					text={t('portfolioBtn.design')}
-					onClick={() => setSelectedCategory('дизайн')}
-					active={selectedCategory === 'дизайн'}
-					type='portfolio'
-					className='grow'
-				/>
-				<Button
-					text={t('portfolioBtn.development')}
-					onClick={() => setSelectedCategory('разработка')}
-					active={selectedCategory === 'разработка'}
-					type='portfolio'
-					className='grow'
-				/>
-			</div>
-
+		<>
 			{works.length === 0 ? (
-				<p className='text-red-500 flex-center min-h-0 h-[calc(100vh-255px)]  md:h-[calc(100vh-270px)] xl:h-[calc(100vh-268px)]'>
-					{t('portfolioBtn.noWorks')}
-				</p>
+				<div className='flex-center h-full'>
+					<p className='text-red-500'>{t('portfolioBtn.noWorks')}</p>
+				</div>
 			) : (
-				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 auto-rows-max overflow-y-auto pr-3 flex-grow min-h-0 h-[calc(100vh-255px)]  md:h-[calc(100vh-270px)] xl:h-[calc(100vh-268px)] pb-3'>
-					{/*overflow-auto scrollbar-none */}
-					{filteredWorks.map((project) => (
+				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 auto-rows-max flex-grow min-h-0 pb-3'>
+					{works.map((project) => (
 						<div
 							key={project.id}
 							className='relative bg-[#7b7c7e] h-[258px] 2xl:h-[374px] rounded-lg overflow-hidden transition-opacity duration-300 ease-in-out'
@@ -101,6 +69,6 @@ export default function Portfolio({ initialWorks }: PortfolioProps) {
 					))}
 				</div>
 			)}
-		</div>
+		</>
 	);
 }

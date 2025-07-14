@@ -72,7 +72,7 @@ export default function Home() {
 					alt='3D Human'
 					className='hidden xl:block w-auto h-[80vh] lg:scale-1 xl:scale-1 2xl:scale-[1.2] object-contain'
 					style={{
-						transform: 'scale(1.3) translateY(12%) translateX(-3%)',
+						transform: 'scale(1.3) translateY(12%) translateX(15%)',
 					}}
 					width={600}
 					height={800}

@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import arrow from '@/public/images/arrow.svg'
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 
@@ -24,7 +23,15 @@ export default function Breadcrumbs() {
 				<Link href='/'>{t('breadcrumbs.home')}</Link>
 				{breadcrumbs.map((crumb, i) => (
 					<span key={crumb.href} className='flex items-center gap-2 '>
-						<Image alt='стрелка' width={10} height={10} src={arrow}/>
+						<Image 
+						src="/images/arrow.svg"
+						alt={t('breadcrumbs.arrow')}
+						width={10} 
+						height={10}
+						loading='eager'
+						priority
+						unoptimized
+						/> 
 						{i === breadcrumbs.length - 1 ? (
 							<span>{crumb.name}</span>
 						) : (

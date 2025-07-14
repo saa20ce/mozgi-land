@@ -17,7 +17,12 @@ interface WorkApiData {
 interface ServiceApiData {
 	id: number;
 	title: string;
-	items: string[] | null;
+	items: Category[];
+}
+
+interface Category {
+	title: string
+	items: string[]
 }
 
 const API_URL = 'http://127.0.0.1:8000/api/';

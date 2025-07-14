@@ -14,7 +14,8 @@
 		"questions": "Вопросы",
 		"service": "Услуги",
 		"about": "О нас",
-		"home": "Главная"
+		"home": "Главная",
+		"arrow": "Стрелка"
 	},
 	"portfolioBtn": {
 		"all": "Все",
@@ -24,7 +25,7 @@
 	},
 	"servicesMenu": {
 		"noService": "Нет доступных сервисов",
-    "open": "Открыть"
+    "open": "Cвязаться"
 	},
 	"questionMenu": {
 		"noQuestion": "Нет доступных вопросов"

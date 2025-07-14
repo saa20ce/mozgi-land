@@ -14,7 +14,8 @@
 		"questions": "FAQ",
 		"service": "Services",
 		"about": "About us",
-		"home": "Home"
+		"home": "Home",
+		"arrow": "Arrow"
 	},
 	"portfolioBtn": {
 		"all": "All",
@@ -24,7 +25,7 @@
 	},
 	"servicesMenu": {
 		"noService": "No available services",
-		"open": "Open"
+		"open": "Contact"
 	},
 	"questionMenu": {
 		"noQuestion": "No questions available"
@@ -43,3 +44,4 @@
 		"errorSubmit": "Error submitting data. Please try again later."
 	}
 }
+

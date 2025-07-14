@@ -4,8 +4,6 @@ import { useRouter } from 'next/router';
 import Feedback from '../Feedback/Feedback';
 import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
-import burgerIcon from '@/public/images/burger.svg';
-import closeIcon from '@/public/images/close.svg'
 import { useTranslation } from 'next-i18next';
 
 interface MainMenuProps {
@@ -82,10 +80,13 @@ const MainMenu = ({
 					className='flex-center'
 				>
 					<Image
+						src="/images/burger.svg"
 						alt={t('burgerMenuAlt')}
 						width={32}
 						height={32}
-						src={burgerIcon}
+						loading='eager'
+						priority
+						unoptimized
 					/>
 				</button>
 			)}
@@ -97,14 +98,17 @@ const MainMenu = ({
 						ref={modalMenuRef}
 					>
 						<button
-							className="absolute -top-12 right-0 md:right-0 w-8 h-8 hover:scale-[1.15] transition-transform duration-500 z-[1001]"
+							className='absolute -top-12 right-0 md:right-0 w-8 h-8 hover:scale-[1.15] transition-transform duration-500 z-[1001]'
 							onClick={() => handleMenuToggle(false)}
 						>
 							<Image
-								src={closeIcon}
+								src='/images/close.svg'
 								alt={t('closeMenuAlt')}
 								width={32}
 								height={32}
+								loading='eager'
+								priority
+								unoptimized
 							/>
 						</button>
 

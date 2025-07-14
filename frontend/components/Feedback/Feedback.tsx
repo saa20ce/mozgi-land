@@ -3,7 +3,6 @@ import Button from '../Button/Button';
 import Text from '../Text/Text';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
-import doneIcon from '@/public/images/done.svg'
 
 type FeedbackProps = {
 	onSubmit?: (data: { phone: string; name: string }) => void;
@@ -103,11 +102,14 @@ const Feedback: React.FC<FeedbackProps> = ({ onSubmit, onClose }) => {
 			<div className='lg:w-[502px] lg:h-[232px] w-[320px] h-[202px] px-6 py-7 rounded-2xl bg-[#1E2D41] flex flex-col gap-4 justify-center items-center text-center xl:py-[38px] xl:px-9'>
 				<div className='flex items-center xl:items-start gap-4 w-full'>
 					<Image
-						src={doneIcon}
+						src='/images/done.svg'
 						alt={t('feedback.submitSuccess')}
 						className='lg:w-[68px] lg:h-[68px] w-[36px] h-[36px]'
 						width={68}
 						height={68}
+						loading='eager'
+						priority
+						unoptimized
 					/>
 					<Text
 						as='p'

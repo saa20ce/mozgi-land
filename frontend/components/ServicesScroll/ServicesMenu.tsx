@@ -1,14 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Button from '@/components/Button/Button';
 import { FaCog } from 'react-icons/fa';
 import Text from '../Text/Text';
 import { useTranslation } from 'next-i18next';
 import { getServices } from '@/lib/api';
+import Feedback from '../Feedback/Feedback';
 
 interface Service {
 	id: number;
 	title: string;
-	categories: string[];
+	categories: Category[];
+}
+
+interface Category {
+	title: string;
+	items: string[];
 }
 
 interface ServicesMenuProps {
@@ -17,7 +23,8 @@ interface ServicesMenuProps {
 
 export default function ServicesMenu({ initialServices }: ServicesMenuProps) {
 	const [services, setServices] = useState<Service[]>(initialServices);
-	const [selected, setSelected] = useState<number | null>(null);
+	const [isFormOpen, setIsFormOpen] = useState(false);
+	const formRef = useRef<HTMLDivElement>(null);
 	const { t, i18n } = useTranslation('common');
 
 	useEffect(() => {
@@ -26,7 +33,7 @@ export default function ServicesMenu({ initialServices }: ServicesMenuProps) {
 			const formattedServices = data.map((item) => ({
 				id: item.id,
 				title: item.title,
-				categories: item.items || [],
+				categories: item.items,
 			}));
 			setServices(formattedServices);
 		}
@@ -34,18 +41,33 @@ export default function ServicesMenu({ initialServices }: ServicesMenuProps) {
 		fetchWorks();
 	}, [i18n.language]);
 
+		useEffect(() => {
+			const handleClickOutside = (event: MouseEvent) => {
+				if (isFormOpen && formRef.current && !formRef.current.contains(event.target as Node)) {
+					setIsFormOpen(false);
+				}};
+	
+			if (isFormOpen) {
+				document.addEventListener('mousedown', handleClickOutside);
+			}
+	
+			return () => {
+				document.removeEventListener('mousedown', handleClickOutside);
+			};
+		}, [isFormOpen,  setIsFormOpen]);
+
 	return (
-		<div className='w-full xl:w-1/2 md:mt-0 h-auto xl:flex-center xl:h-full  overflow-y-auto xl:max-w-[420px] 2xl:max-w-[620px] '>
-			{' '}
+		<div className='w-full xl:w-1/2 mt-0 h-auto xl:flex-center xl:h-full xl:max-w-[420px] 2xl:max-w-[620px]'>
+
 			{/* overflow-auto scrollbar-none*/}
-			<div className='w-full max-h-full overflow-y-auto pb-3'>
-				<div className='flex flex-col justify-center w-full  overflow-auto lg:h-100 2xl:h-full gap-2 2xl:pl-[100px]'>
+			<div className='w-full max-h-full overflow-y-auto scrollbar-none py-3 mt-3  flex flex-col gap-2 rounded-t-[1.5rem]'>
+				{/* <div className='flex flex-col justify-center w-full  overflow-auto lg:h-100 2xl:h-full gap-2 2xl:pl-[100px]'> */}
 					{services.length === 0 ? (
 						<p className='text-red-500 flex-center'>
 							{t('servicesMenu.noService')}
 						</p>
 					) : (
-						services.map((service, index) => (
+						services.map((service) => (
 							<div
 								key={service.id}
 								className='p-3 bg-[#3B404F] text-white rounded-xl flex items-center justify-between md:flex-row md:items-center gap-4 '
@@ -60,35 +82,64 @@ export default function ServicesMenu({ initialServices }: ServicesMenuProps) {
 										<FaCog className='text-white text-2xl' />
 										{service.title}
 									</Text>
-									<ul className='text-sm text-gray-300 mt-1 ml-2 space-y-1'>
+									<ol className='list-decimal list-inside mt-2 ml-4 space-y-2'>
 										{service.categories.map(
-											(category, i) => (
-												<li
-													key={i}
-													className='list-inside list-disc'
-												>
-													<Text
-														as='span'
-														size='sm'
-														color='white'
-													>
-														{category}
-													</Text>
-												</li>
-											),
+											(
+												{ title, items },
+												categoryIndex,
+											) =>
+												title.trim() === '' ? (
+													items.map(
+														(item, itemIndex) => (
+															<li
+																key={`${categoryIndex}-${itemIndex}`}
+																className='list-disc'
+															>
+																<Text as='span' size='sm' color='white'>{item}</Text>
+															</li>
+														),
+													)
+												) : (
+													<li key={title}>
+														<Text
+															as='span'
+															size='sm'
+															color='white'
+															className='font-medium'
+														>
+															{title}
+														</Text>
+														<ol className='list-disc list-inside ml-5 mt-1 space-y-1'>
+															{items.map(
+																(item) => (
+																	<li key={item} >
+																		<Text as='span' size='sm' color='white'>{item}</Text>
+																	</li>
+																),
+															)}
+														</ol>
+													</li>
+												),
 										)}
-									</ul>
+									</ol>
 								</div>
 								<Button
-									text=	{t('servicesMenu.open')}
+									text={t('servicesMenu.open')}
 									type='service'
-									active={selected === index}
-									onClick={() => setSelected(index)}
+									onClick={() => setIsFormOpen(true)}
+									className='text-nowrap'
 								/>
+								{isFormOpen && (
+									<div className='fixed inset-0 flex items-center justify-center backdrop-blur-lg z-[2000] xl:backdrop-blur-md'>
+										<div ref={formRef} className='relative'>
+											<Feedback onClose={() => setIsFormOpen(false)} />
+										</div>
+									</div>
+								)}
 							</div>
 						))
 					)}
-				</div>
+				{/* </div> */}
 			</div>
 			{/* <div className="text-gray-400 text-sm text-center mt-6">
         <Text as="p" color="white" size="lg" weight="medium">
