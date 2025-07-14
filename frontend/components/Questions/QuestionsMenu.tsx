@@ -37,9 +37,8 @@ export default function QuestionMenu({ initialQuestions }: QuestionMenuProps) {
 	};
 
 	return (
-		<div className='w-full xl:w-1/2 xl:max-w-[420px] 2xl:max-w-[620px] overflow-auto scrollbar-none rounded-t-lg pb-6 '>
-			{/* <div className='w-full max-h-full overflow-y-auto scrollbar-none pb-3'> */}
-				<div className='flex flex-col w-full lg:h-100 2xl:h-full gap-2 2xl:pl-[100px] '>
+		<div className='w-full xl:w-1/2 xl:max-w-[420px] 2xl:max-w-[620px]  overflow-auto scrollbar-none rounded-t-lg py-3 xl:mt-3 '>
+				<div className='flex flex-col w-full 2xl:h-full gap-2 2xl:pl-[100px] '>
 					{questions.length === 0 ? (
 						<p className='text-red-500 flex-center'>
 							{t('questionMenu.noQuestion')}
@@ -78,7 +77,6 @@ export default function QuestionMenu({ initialQuestions }: QuestionMenuProps) {
 						))
 					)}
 				</div>
-			{/* </div> */}
 		</div>
 	);
 }

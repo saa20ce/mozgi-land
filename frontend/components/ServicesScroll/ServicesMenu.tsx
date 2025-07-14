@@ -57,11 +57,8 @@ export default function ServicesMenu({ initialServices }: ServicesMenuProps) {
 		}, [isFormOpen,  setIsFormOpen]);
 
 	return (
-		<div className='w-full xl:w-1/2 xl:max-w-[420px] 2xl:max-w-[620px] overflow-auto scrollbar-none rounded-t-lg pb-6 mt-3'>
-
-			{/* overflow-auto scrollbar-none*/}
-			{/* <div className='w-full max-h-full overflow-y-auto scrollbar-none py-3 flex flex-col gap-2 '> */}
-				<div className='flex flex-col justify-center w-full xl:pt-3  xl:overflow-hidden gap-2 2xl:pl-[100px]'>
+		<div className='w-full xl:w-1/2 xl:max-w-[420px] 2xl:max-w-[620px] 2xl:pl-[100px] overflow-auto scrollbar-none rounded-t-lg pb-3 xl:mt-3'>
+				<div className='flex flex-col w-full xl:pt-3  xl:overflow-hidden gap-2 '>
 					{services.length === 0 ? (
 						<p className='text-red-500 flex-center'>
 							{t('servicesMenu.noService')}
@@ -139,40 +136,7 @@ export default function ServicesMenu({ initialServices }: ServicesMenuProps) {
 							</div>
 						))
 					)}
-				{/* </div> */}
 			</div>
-			{/* <div className="text-gray-400 text-sm text-center mt-6">
-        <Text as="p" color="white" size="lg" weight="medium">
-          Технологии которые мы используем:
-        </Text>
-        <div className="flex gap-4 flex-nowrap lg:flex-wrap justify-center mt-2 ">
-          {[
-            { name: "Go", src: "/images/gologo.svg" },
-            { name: "PHP", src: "/images/phplogo.svg" },
-            { name: "Csharp", src: "/images/csharplogo.svg" },
-            { name: "JS", src: "/images/jslogo.svg" },
-            { name: "TS", src: "/images/tslogo.svg" },
-            { name: "Python", src: "/images/pylogo.svg" },
-          ].map((tech, i) => (
-            <div
-              key={i}
-              className={`flex items-center justify-center rounded-lg p-2 ${tech.name === "PHP" ? "w-20 h-19" : "w-16 h-16"
-                }`}
-            >
-              <Image
-                src={tech.src}
-                alt={tech.name}
-                className={`object-contain ${tech.name === "Go"
-                  ? "scale-150 translate-x-[-4px]"
-                  : "w-[100%] h-[90%]"
-                  }`}
-                width={tech.name === "PHP" ? 80 : 64}
-                height={tech.name === "PHP" ? 76 : 64}
-              />
-            </div>
-          ))}
-        </div> */}
-			{/* </div> */}
 		</div>
 	);
 }
