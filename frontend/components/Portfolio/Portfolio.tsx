@@ -37,13 +37,13 @@ export default function Portfolio({ initialWorks }: PortfolioProps) {
 	}, [i18n.language]);
 
 	return (
-		<>
+		<div className='w-full h-full'>
 			{works.length === 0 ? (
 				<div className='flex-center h-full'>
 					<p className='text-red-500'>{t('portfolioBtn.noWorks')}</p>
 				</div>
 			) : (
-				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 auto-rows-max flex-grow min-h-0 pb-3'>
+				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 auto-rows-max pb-6'>
 					{works.map((project) => (
 						<div
 							key={project.id}
@@ -69,6 +69,6 @@ export default function Portfolio({ initialWorks }: PortfolioProps) {
 					))}
 				</div>
 			)}
-		</>
+		</div>
 	);
 }

@@ -61,7 +61,7 @@ export default function ServicesPage({
 
 	return (
 		<Layout>
-			<div className='flex flex-col xl:flex-row xl:mt-[-12px] md:h-[calc(100vh-233px)] xl:h-[calc(100vh-200px)] h-[calc(100vh-200px)] w-full overflow-hidden'>
+			<div className='flex flex-col xl:flex-row xl:mt-[-12px] h-screen-minus-195 w-full overflow-hidden'>
 				<div className='md:w-1/2 space-y-6 xl:flex-center 2xl:ml-[-100px]'>
 					<MainMenu
 						isMobileMenuOpen={isMobileMenuOpen}
@@ -73,3 +73,4 @@ export default function ServicesPage({
 		</Layout>
 	);
 }
+

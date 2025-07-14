@@ -44,7 +44,7 @@ module.exports = {
     },
     extend: {
       height: {
-        'screen-minus-255': 'calc(var(--vh, 1vh) * 100 - 255px)',
+        'screen-minus-195': 'calc(var(--vh, 1vh) * 100 - 195px)',
         'screen-minus-270': 'calc(var(--vh, 1vh) * 100 - 270px)',
         'screen-minus-268': 'calc(var(--vh, 1vh) * 100 - 268px)',
       },

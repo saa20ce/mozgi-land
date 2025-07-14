@@ -21,7 +21,6 @@ const MainMenu = ({
 	const isHomePage = router.pathname === '/';
 	const [isFormOpen, setIsFormOpen] = useState(false);
 	const formRef = useRef<HTMLDivElement>(null); // Ссылка на контейнер формы
-	const modalMenuRef = useRef<HTMLDivElement>(null);
 	const { t } = useTranslation('common');
 
 	const handleMenuToggle = (isOpen: boolean) => {

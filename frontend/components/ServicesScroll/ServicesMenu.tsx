@@ -57,11 +57,11 @@ export default function ServicesMenu({ initialServices }: ServicesMenuProps) {
 		}, [isFormOpen,  setIsFormOpen]);
 
 	return (
-		<div className='w-full xl:w-1/2 mt-0 h-auto xl:flex-center xl:h-full xl:max-w-[420px] 2xl:max-w-[620px]'>
+		<div className='w-full xl:w-1/2 xl:max-w-[420px] 2xl:max-w-[620px] overflow-auto scrollbar-none rounded-t-lg pb-6 mt-3'>
 
 			{/* overflow-auto scrollbar-none*/}
-			<div className='w-full max-h-full overflow-y-auto scrollbar-none py-3 mt-3  flex flex-col gap-2 rounded-t-[1.5rem]'>
-				{/* <div className='flex flex-col justify-center w-full  overflow-auto lg:h-100 2xl:h-full gap-2 2xl:pl-[100px]'> */}
+			{/* <div className='w-full max-h-full overflow-y-auto scrollbar-none py-3 flex flex-col gap-2 '> */}
+				<div className='flex flex-col justify-center w-full xl:pt-3  xl:overflow-hidden gap-2 2xl:pl-[100px]'>
 					{services.length === 0 ? (
 						<p className='text-red-500 flex-center'>
 							{t('servicesMenu.noService')}

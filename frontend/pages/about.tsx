@@ -38,7 +38,7 @@ export default function Home() {
 		<Layout>
 			<section
 				id='about'
-				className='pb-4 px-4 max-w-5xl mx-auto text-white-custom  xl:h-[calc(100vh-218px)] h-[calc(100vh-200px)] overflow-auto'
+				className='pb-7 px-4 max-w-5xl mx-auto text-white-custom  xl:h-[calc(100vh-218px)] h-[calc(100vh-200px)] overflow-auto scrollbar-none'
 			>
 				<Text
 					as='h2'
