@@ -34,20 +34,15 @@ const MainMenu = ({
 	};
 
 	useEffect(() => {
+		
 		const handleClickOutside = (event: MouseEvent) => {
-			if (
-				isFormOpen &&
-				formRef.current &&
-				!formRef.current.contains(event.target as Node)
-			) {
+			const target = event.target as HTMLElement;
+
+			if (isFormOpen && formRef.current && !formRef.current.contains(target)) {
 				setIsFormOpen(false);
 			}
 
-			if (
-				isMobileMenuOpen &&
-				modalMenuRef.current &&
-				!modalMenuRef.current.contains(event.target as Node)
-			) {
+			if (isMobileMenuOpen && !target.closest('[data-menu-container]')) {
 				setIsMobileMenuOpen(false);
 			}
 		};
@@ -92,10 +87,10 @@ const MainMenu = ({
 			)}
 
 			{isMobileMenuOpen && (
-				<div className=' fixed inset-0 z-[1000] backdrop-blur-lg flex items-center justify-center'>
+				<div className='fixed inset-0 z-[1000] backdrop-blur-lg flex items-center justify-center' >
 					<div
-						className='relative w-full max-w-[320px] md:max-w-[462px] h-[296px] md:h-[364px] mx-auto px-0'
-						ref={modalMenuRef}
+						className='relative w-full max-w-[320px] md:max-w-[462px] h-[296px] md:h-[364px] mx-auto px-0'	
+						data-menu-container
 					>
 						<button
 							className='absolute -top-12 right-0 md:right-0 w-8 h-8 hover:scale-[1.15] transition-transform duration-500 z-[1001]'
@@ -112,7 +107,7 @@ const MainMenu = ({
 							/>
 						</button>
 
-						<div className='flex flex-col gap-y-2 space-y-4'>
+						<div className='flex flex-col gap-y-2 space-y-4' >
 							<div>
 								<Button
 									text={t('consultation')}
