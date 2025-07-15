@@ -12,6 +12,12 @@ interface WorkApiData {
 	description: string | null;
 	type: string;
 	thumbnail: string | null;
+	images: Images[];
+}
+
+interface Images {
+	id: number;
+	image: string;
 }
 
 interface ServiceApiData {
@@ -21,8 +27,8 @@ interface ServiceApiData {
 }
 
 interface Category {
-	title: string
-	items: string[]
+	title: string;
+	items: string[];
 }
 
 const API_URL = 'http://127.0.0.1:8000/api/';
@@ -35,9 +41,12 @@ const api: AxiosInstance = axios.create({
 });
 
 export const getQuestions = async (lang = 'ru'): Promise<QuestionApiData[]> => {
-	const response: AxiosResponse<QuestionApiData[]> = await api.get('questions/',{
+	const response: AxiosResponse<QuestionApiData[]> = await api.get(
+		'questions/',
+		{
 			params: { lang },
-	});
+		},
+	);
 	return response.data;
 };
 
@@ -49,11 +58,13 @@ export const getWorks = async (lang = 'ru'): Promise<WorkApiData[]> => {
 };
 
 export const getServices = async (lang = 'ru'): Promise<ServiceApiData[]> => {
-	const response: AxiosResponse<ServiceApiData[]> = await api.get('services/',{
+	const response: AxiosResponse<ServiceApiData[]> = await api.get(
+		'services/',
+		{
 			params: { lang },
-	});
+		},
+	);
 	return response.data;
 };
 
 export default api;
-   

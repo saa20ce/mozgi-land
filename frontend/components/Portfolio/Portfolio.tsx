@@ -3,12 +3,19 @@ import Text from '../Text/Text';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import { getWorks } from '@/lib/api';
+import Gallery from '@/components/Gallery/Gallery';
 
 interface Work {
 	id: number;
 	title: string;
 	subtitle: string;
 	category: string;
+	preview: string;
+	images: Images[];
+}
+
+interface Images {
+	id: number;
 	image: string;
 }
 
@@ -18,6 +25,7 @@ interface PortfolioProps {
 
 export default function Portfolio({ initialWorks }: PortfolioProps) {
 	const [works, setWorks] = useState<Work[]>(initialWorks);
+	const [activeGalleryId, setActiveGalleryId] = useState<number | null>(null);
 	const { t, i18n } = useTranslation('common');
 
 	useEffect(() => {
@@ -28,7 +36,8 @@ export default function Portfolio({ initialWorks }: PortfolioProps) {
 				title: item.title,
 				subtitle: item.description || '',
 				category: item.type,
-				image: item.thumbnail || '/images/project.png',
+				preview: item.thumbnail || '/images/project.png',
+				images: item.images,
 			}));
 			setWorks(formattedWorks);
 		}
@@ -48,9 +57,10 @@ export default function Portfolio({ initialWorks }: PortfolioProps) {
 						<div
 							key={project.id}
 							className='relative bg-[#7b7c7e] h-[258px] 2xl:h-[374px] rounded-lg overflow-hidden transition-opacity duration-300 ease-in-out'
+							onClick={() => setActiveGalleryId(project.id)}
 						>
 							<Image
-								src={`http://127.0.0.1:8000${project.image}`}
+								src={`http://127.0.0.1:8000${project.preview}`}
 								alt={project.title}
 								className='absolute inset-0 w-full h-full object-cover object-center'
 								width={300}
@@ -67,6 +77,15 @@ export default function Portfolio({ initialWorks }: PortfolioProps) {
 							</div>
 						</div>
 					))}
+					{activeGalleryId !== null && (
+						<Gallery
+							images={
+								works.find((w) => w.id === activeGalleryId)
+									?.images || []
+							}
+							onClose={() => setActiveGalleryId(null)}
+						/>
+					)}
 				</div>
 			)}
 		</div>

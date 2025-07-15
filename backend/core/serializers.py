@@ -1,9 +1,15 @@
 from rest_framework import serializers
-from .models import Works,Questions,Services,FeedbackSubmission
+from .models import WorkImage,Works,Questions,Services,FeedbackSubmission
+
+class WorkImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = WorkImage
+        fields = ['id', 'image']  
 
 class WorksSerializer(serializers.ModelSerializer):
     title = serializers.SerializerMethodField()
     description = serializers.SerializerMethodField()
+    images = WorkImageSerializer(many=True, read_only=True)  
 
     def get_title(self, obj):
         lang = self.context.get('lang', 'ru')
@@ -15,7 +21,7 @@ class WorksSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Works
-        fields = ['id', 'title', 'description', 'type', 'thumbnail']
+        fields = ['id', 'title', 'description', 'type', 'thumbnail', 'images']
 
 class QuestionsSerializer(serializers.ModelSerializer):
     title = serializers.SerializerMethodField()

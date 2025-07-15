@@ -9,6 +9,12 @@ interface WorkApiData {
   description: string | null; 
   type: string;
   thumbnail: string | null; 
+  images: Images[];
+}
+  
+interface Images {
+  id: number;
+  image: string;
 }
 
 interface Work {
@@ -16,7 +22,8 @@ interface Work {
   title: string;
   subtitle: string;
   category: string;
-  image: string;
+  preview: string;
+  images: Images[];
 }
 
 export async function getStaticProps({ locale }: { locale: string }) {
@@ -28,7 +35,8 @@ export async function getStaticProps({ locale }: { locale: string }) {
       title: item.title,
       subtitle: item.description || "",
       category: item.type,
-      image: item.thumbnail || "/images/project.png",
+      preview: item.thumbnail || "/images/project.png",
+      images: item.images
     }));
     return {
       props: {

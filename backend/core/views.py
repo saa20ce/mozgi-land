@@ -17,10 +17,11 @@ class WorksListView(ListAPIView):
     permission_classes=[AllowAny]
 
     def get_queryset(self):
-        queryset = Works.objects.all()
+        queryset = Works.objects.prefetch_related('images').all()
         print(f"Queryset:{queryset}")
         print(f"User: {self.request.user}")
         return queryset
+
 
     def get_serializer_context(self):
         return {'lang': self.request.query_params.get('lang', 'ru')}
