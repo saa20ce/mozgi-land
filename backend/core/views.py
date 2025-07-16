@@ -7,40 +7,68 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, CreateAPIView
 import logging
+from telegram_notify import send_telegram_message
+import asyncio
 # Create your views here.
-
 
 
 class WorksListView(ListAPIView):
     serializer_class = WorksSerializer
     permission_classes=[AllowAny]
+
     def get_queryset(self):
-        queryset = Works.objects.all()
+        queryset = Works.objects.prefetch_related('images').all()
         print(f"Queryset:{queryset}")
         print(f"User: {self.request.user}")
         return queryset
+
+
+    def get_serializer_context(self):
+        return {'lang': self.request.query_params.get('lang', 'ru')}
+
 class QuestionsListView(ListAPIView):
     serializer_class = QuestionsSerializer
     permission_classes=[AllowAny]
+
     def get_queryset(self):
         queryset = Questions.objects.all()
         print(f"Queryset:{queryset}")
         return queryset
+    
+    def get_serializer_context(self):
+        return {'lang': self.request.query_params.get('lang', 'ru')}
 
 
 class ServicesListView(ListAPIView):
     serializer_class = ServicesSerializer
     permission_classes=[AllowAny]
+    
     def get_queryset(self):
         queryset = Services.objects.all()
         print(f"Queryset:{queryset}")
         return queryset
+    
+    def get_serializer_context(self):
+        return {'lang': self.request.query_params.get('lang', 'ru')}
     
 logger = logging.getLogger(__name__)
 
 class FeedbackSubmissionView(CreateAPIView):
     serializer_class = FeedbackSubmissionSerializer
     permission_classes = [AllowAny]
+
+    def perform_create(self, serializer):
+        instance = serializer.save()
+        message = (
+            f"📥 Новая заявка на консультацию\n\n"
+            f"👤 ФИО: {instance.name}\n"
+            f"📞 Телефон: {instance.phone}\n"
+            f"🕒 Время: {instance.created_at.strftime('%Y-%m-%d %H:%M:%S')}"
+        )
+        try:
+            asyncio.run(send_telegram_message(message))
+        except Exception as e:
+            print(f"Ошибка отправки в Telegram: {e}")
 
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)

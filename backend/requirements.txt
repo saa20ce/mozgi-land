@@ -3,3 +3,5 @@ Pillow==11.1.0
 Djangorestframework
 Djangorestframework-simplejwt
 django-cors-headers
+python-telegram-bot==20.8
+python-dotenv

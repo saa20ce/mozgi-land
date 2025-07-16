@@ -1,30 +1,55 @@
-import Link from 'next/link';
 import Image from 'next/image';
+import MainMenu from '../MainMenu/MainMenu';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+
 const Header = () => {
-  return (
-    <header className="flex items-center justify-between p-4 bg-[#F6F6F633] w-full h-[64px] rounded-full">
-      <div className="flex items-center space-x-3">
-        <a href="http://localhost:3000/">
-          <div className="text-white bg-[#F26666] rounded-full px-6 py-2 font-bold">
-            LOGO
-          </div>
-        </a>
-        <nav className="flex">
-          <Link href="/about" className="px-6 py-2 bg-[#FFFFFF42] text-white rounded-full font-bold">
-            О нас
-          </Link>
-        </nav>
-      </div>
-      <div className="rounded-full">
-        <Image
-          src="/images/icon-globe.png"
-          alt="Смена языка"
-          width={32} 
-          height={32} 
-        />
-      </div>
-    </header>
-  );
+	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+	const router = useRouter();
+	const { locale, asPath } = router;
+
+	const toggleLocale = () => {
+		const nextLocale = locale === 'ru' ? 'en' : 'ru';
+		router.push(asPath, asPath, { locale: nextLocale });
+	};
+
+	return (
+		<header className='flex items-center justify-between p-5 bg-[#F6F6F633] w-full h-[64px] rounded-full text-white-custom'>
+			<div className='flex items-center space-x-3'>
+				<Link href='/' locale={router.locale}>
+					<div className=' bg-[#F26666] rounded-full px-5 py-[6px] font-medium min-w-[94px] text-xl'>
+						LOGO
+					</div>
+				</Link>
+			</div>
+			<div className='flex-center gap-2'>
+				<div className='rounded-full'>
+					<button
+						onClick={toggleLocale}
+						className='rounded-full focus:outline-none flex-center'
+					>
+						<Image
+							src='/images/globe.svg'
+							alt='Смена языка'
+							width={32}
+							height={32}
+							loading='eager'
+							priority
+							unoptimized
+						/>
+					</button>
+				</div>
+				<div>
+					<MainMenu
+						isMobileMenuOpen={isMobileMenuOpen}
+						setIsMobileMenuOpen={setIsMobileMenuOpen}
+						burger={true}
+					/>
+				</div>
+			</div>
+		</header>
+	);
 };
 
 export default Header;

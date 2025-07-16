@@ -1,0 +1,47 @@
+{
+	"title": "Development and Design",
+	"description": "A modern web studio creating selling digital products for any business.",
+	"consultation": "Get a consultation",
+	"ourServices": "Our Services",
+	"ourWorks": "Our Works",
+	"faq": "Frequently Asked Questions",
+	"aboutUs": "About Us",
+	"openMenu": "Open menu",
+	"burgerMenuAlt": "Burger menu",
+	"closeMenuAlt": "Close menu",
+	"breadcrumbs": {
+		"ourworks": "Portfolio",
+		"questions": "FAQ",
+		"service": "Services",
+		"about": "About us",
+		"home": "Home",
+		"arrow": "Arrow"
+	},
+	"portfolioBtn": {
+		"all": "All",
+		"design": "Design",
+		"development": "Development",
+		"noWorks": "No available works"
+	},
+	"servicesMenu": {
+		"noService": "No available services",
+		"open": "Contact"
+	},
+	"questionMenu": {
+		"noQuestion": "No questions available"
+	},
+	"feedback": {
+		"consultationRequest": "Consultation Request",
+		"enterYourData": "Enter your data:",
+		"fioPlaceholder": "Name",
+		"phonePlaceholder": "+7 (xxx) xxx-xx-xx",
+		"submit": "Submit",
+		"submitSuccess": "Your application is accepted!",
+		"weWillContact": "We will contact you within 5 minutes",
+		"ok": "OK",
+		"errorName": "Enter a valid name (minimum of 2 letters)",
+		"errorPhone": "Please enter a valid phone number in format +7 (xxx) xxx-xx-xx",
+		"errorSubmit": "Error submitting data. Please try again later."
+	}
+}
+

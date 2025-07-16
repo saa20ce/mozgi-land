@@ -1,12 +1,13 @@
+import Link from "next/link";
 import Text from "../Text/Text";
 const Footer = () => {
   return (
-    <footer className="relative z-10 flex items-center justify-between p-4 md:p-6 bg-[#1C202DB2] text-gray-400 w-full h-[50px] mt-auto">
-      <div className="container mx-auto max-w-[1140px] px-0 flex items-center justify-between">
-        <Text as="p">MOZGI TECH | 2024</Text>
-        <div className="flex space-x-4">
-          <a href="#" className="text-white">INSTA</a>
-          <a href="#" className="text-white">BEHANCE</a>
+    <footer className="text-white-custom text-sm relative z-10 flex items-center justify-between py-3 px-5 md:p-4 bg-[#1c202d] text-gray-400 w-full mt-auto 3xl:py-3 xl:px-12 2xl:px-0 xl:py-4">
+      <div className="container mx-auto sm:max-w-[544px] md:max-w-[720px] xl:max-w-full 2xl:max-w-[1440px] 3xl:max-w-[1490px] px-0 flex items-center justify-between ">
+        <Text as="p" weight="medium" size="sm" className="3xl:text-xl xl:text-[18px]">MOZGI TECH  <span className="font-normal px-[2px]">| 2025</span></Text>
+        <div className="flex space-x-4 font-medium 3xl:text-xl xl:text-[18px]">
+          <Link href="#">INSTA</Link>
+          <Link href="#">BEHANCE</Link>
         </div>
       </div>
     </footer>

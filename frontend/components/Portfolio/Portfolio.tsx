@@ -1,78 +1,93 @@
-import { useState} from "react";
-import Button from "../Button/Button";
-import Text from "../Text/Text";
-import Image from "next/image";
+import { useEffect, useState } from 'react';
+import Text from '../Text/Text';
+import Image from 'next/image';
+import { useTranslation } from 'next-i18next';
+import { getWorks } from '@/lib/api';
+import Gallery from '@/components/Gallery/Gallery';
 
 interface Work {
-  id: number;
-  title: string;
-  subtitle: string;
-  category: string;
-  image: string;
+	id: number;
+	title: string;
+	subtitle: string;
+	category: string;
+	preview: string;
+	images: Images[];
+}
+
+interface Images {
+	id: number;
+	image: string;
 }
 
 interface PortfolioProps {
-  initialWorks: Work[];
+	initialWorks: Work[];
 }
 
 export default function Portfolio({ initialWorks }: PortfolioProps) {
-  const [works] = useState<Work[]>(initialWorks);
-  const [selectedCategory, setSelectedCategory] = useState("все");
+	const [works, setWorks] = useState<Work[]>(initialWorks);
+	const [activeGalleryId, setActiveGalleryId] = useState<number | null>(null);
+	const { t, i18n } = useTranslation('common');
 
+	useEffect(() => {
+		async function fetchWorks() {
+			const data = await getWorks(i18n.language);
+			const formattedWorks = data.map((item) => ({
+				id: item.id,
+				title: item.title,
+				subtitle: item.description || '',
+				category: item.type,
+				preview: item.thumbnail || '/images/project.png',
+				images: item.images,
+			}));
+			setWorks(formattedWorks);
+		}
 
-  const filteredWorks =
-    selectedCategory === "все"
-      ? works
-      : works.filter((work) => work.category === selectedCategory);
-  return (
-    <div className="w-full flex flex-col rounded-[24px] py-6 lg:p-6">
-      <div className="flex justify-center gap-2 lg:gap-6 mb-8">
-        <Button
-          text="Все"
-          onClick={() => setSelectedCategory("все")}
-          active={selectedCategory === "все"}
-          type="portfolio"
-        />
-        <Button
-          text="Дизайн"
-          onClick={() => setSelectedCategory("дизайн")}
-          active={selectedCategory === "дизайн"}
-          type="portfolio"
-        />
-        <Button
-          text="Разработка"
-          onClick={() => setSelectedCategory("разработка")}
-          active={selectedCategory === "разработка"}
-          type="portfolio"
-        />
-      </div>
+		fetchWorks();
+	}, [i18n.language]);
 
-      <div className="flex-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pb-18 overflow-y-auto h-[57vh] lg:h-auto lg:max-h-[calc(50vh)] xl:max-h-[calc(60vh)] 2xl:max-h-[calc(65vh)] custom-scroll pl-0 lg:pl-3 pr-3">
-        {works.length === 0 ? (
-          <p className="text-red-500">Нет доступных работ</p>
-        ) : (
-          filteredWorks.map((project) => (
-            <div
-              key={project.id}
-              className={`bg-[#7b7c7e] h-[300px] lg:h-auto rounded-lg p-4 text-left overflow-hidden transition-opacity duration-300 ease-in-out`}
-            >
-              <Image
-                src={project.image}
-                alt={project.title}
-                className="w-full rounded-lg mb-2 h-auto object-cover"
-                width={300} 
-                height={200} 
-              />
-              <Text as="h3" size="lg" color="white" className="font-semibold mt-2">
-                {project.title}
-              </Text>
-              <Text as="p" size="sm" color="white">
-                {project.subtitle}
-              </Text>
-            </div>
-          ))
-        )}
-      </div>
-    </div>
-  );
+	return (
+		<div className='rounded-t-lg overflow-hidden h-screen-minus-195 flex flex-col'>
+			{works.length === 0 ? (
+				<div className='flex-center h-full'>
+					<p className='text-red-500'>{t('portfolioBtn.noWorks')}</p>
+				</div>
+			) : (
+				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 auto-rows-max pb-3 overflow-y-auto  flex-grow scrollbar-none '>
+					{works.map((project) => (
+						<div
+							key={project.id}
+							className='relative bg-[#7b7c7e] h-[258px] 2xl:h-[374px] rounded-lg overflow-hidden transition-opacity duration-300 ease-in-out'
+							onClick={() => setActiveGalleryId(project.id)}
+						>
+							<Image
+								src={`http://127.0.0.1:8000${project.preview}`}
+								alt={project.title}
+								className='absolute inset-0 w-full h-full object-cover object-center'
+								width={300}
+								height={200}
+								priority
+							/>
+							<div className='absolute bottom-0 w-full bg-black bg-opacity-50 py-2 px-4 rounded-b-lg text-white z-10'>
+								<Text as='h3' size='xl' weight='medium'>
+									{project.title}
+								</Text>
+								<Text as='p' size='lg'>
+									{project.subtitle}
+								</Text>
+							</div>
+						</div>
+					))}
+					{activeGalleryId !== null && (
+						<Gallery
+							images={
+								works.find((w) => w.id === activeGalleryId)
+									?.images || []
+							}
+							onClose={() => setActiveGalleryId(null)}
+						/>
+					)}
+				</div>
+			)}
+		</div>
+	);
 }

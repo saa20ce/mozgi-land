@@ -1,0 +1,46 @@
+{
+	"title": "Разработка и дизайн",
+	"description": "Современная веб-студия, занимающееся разработкой продающихся цифровых продуктов для любого бизнеса.",
+	"consultation": "Получить консультацию",
+	"ourServices": "Наши услуги",
+	"ourWorks": "Наши работы",
+	"faq": "Частые вопросы",
+	"aboutUs": "О нас",
+	"openMenu": "Открыть меню",
+	"burgerMenuAlt": "Бургер меню",
+	"closeMenuAlt": "Закрыть меню",
+	"breadcrumbs": {
+		"ourworks": "Портфолио",
+		"questions": "Вопросы",
+		"service": "Услуги",
+		"about": "О нас",
+		"home": "Главная",
+		"arrow": "Стрелка"
+	},
+	"portfolioBtn": {
+		"all": "Все",
+		"design": "Дизайн",
+		"development": "Разработка",
+		"noWorks": "Нет доступных работ"
+	},
+	"servicesMenu": {
+		"noService": "Нет доступных сервисов",
+    "open": "Cвязаться"
+	},
+	"questionMenu": {
+		"noQuestion": "Нет доступных вопросов"
+	},
+	"feedback": {
+		"consultationRequest": "Заявка на консультацию",
+		"enterYourData": "Введите свои данные:",
+		"fioPlaceholder": "Имя",
+		"phonePlaceholder": "+7 (xxx) xxx-xx-xx",
+		"submit": "Отправить",
+		"submitSuccess": "Ваша заявка принята!",
+		"weWillContact": "Мы свяжемся с вами в течение 5 минут",
+		"ok": "Хорошо",
+		"errorName": "Введите корректное имя(минимум 2 буквы)",
+		"errorPhone": "Введите корректный номер в формате +7 (xxx) xxx-xx-xx",
+		"errorSubmit": "Ошибка при отправке данных. Попробуйте позже."
+	}
+}

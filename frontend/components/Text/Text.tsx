@@ -1,14 +1,16 @@
 // frontend/components/Text.tsx
 import React from "react";
 import clsx from "clsx";
+import Link from "next/link";
 type TextProps = {
   children: React.ReactNode;
   className?: string;
   as?: keyof JSX.IntrinsicElements;
-  size?: "sm" | "md" | "lg" | "xl" | "xxl";
-  color?: "white" | "gray" | "black" | "blue" | "red" | "green";
+  size?: "msm" | "sm" | "md" | "lg" | "xl" | "xxl";
+  color?: "white" | "gray" | "black" | "blue" | "red" | "green" | 'white-custom';
   weight?: "light" | "normal" | "medium" | "semibold" | "bold";
   href?: string;
+  locale?: string;
 };
 
 const Text = ({
@@ -16,11 +18,13 @@ const Text = ({
   className = "",
   as: Tag = "p",
   size = "md",
-  color = "white",
+  color = "white-custom",
   weight = "normal",
   href,
+  locale
 }: TextProps) => {
   const textSize = {
+    msm: "text-[15px]",
     sm: "text-sm",
     md: "text-base",
     lg: "text-lg",
@@ -35,6 +39,7 @@ const Text = ({
     blue: "text-blue-500",
     red: "text-red-500",
     green: "text-green-500",
+    'white-custom': 'text-white-custom',
   };
 
   const fontWeight = {
@@ -46,8 +51,9 @@ const Text = ({
   };
   if (href) {
     return (
-      <a
+      <Link
         href={href}
+        locale={locale}
         className={clsx(
           textSize[size],
           className,
@@ -55,7 +61,7 @@ const Text = ({
         )}
       >
         {children}
-      </a>
+      </Link>
     );
   }
   return (
