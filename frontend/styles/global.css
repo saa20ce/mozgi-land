@@ -135,3 +135,11 @@ body {
 		@apply flex items-center justify-center;
 	}
 }
+
+p {
+  margin: 0 !important;
+}
+
+ol,ul {
+  margin-bottom: 0 !important;
+}

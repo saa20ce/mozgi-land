@@ -92,12 +92,12 @@ export default function Home() {
 					<Text className='text-xl font-semibold mb-4'>
 						{t('project_question')}
 					</Text>
-					<Text className='text-lg mb-6'>{t('project_invite')}</Text>
+					<Text className='text-lg'>{t('project_invite')}</Text>
 					<Button
 						text={t('consult_button')}
 						type='mobilemenu'
 						active
-						className='max-w-[385px] m-auto'
+						className='max-w-[385px] m-auto mt-3'
 						onClick={handleOpenForm}
 					/>
 				</div>
@@ -120,3 +120,4 @@ export async function getStaticProps({ locale }: { locale: string }) {
 		},
 	};
 }
+ 

@@ -41,12 +41,11 @@ export default function Portfolio({ initialWorks }: PortfolioProps) {
 			}));
 			setWorks(formattedWorks);
 		}
-
 		fetchWorks();
 	}, [i18n.language]);
 
 	return (
-		<div className='rounded-t-lg overflow-hidden h-screen-minus-195 flex flex-col'>
+		<div className='rounded-t-lg pb-3 overflow-hidden h-screen-minus-195 flex flex-col'>
 			{works.length === 0 ? (
 				<div className='flex-center h-full'>
 					<p className='text-red-500'>{t('portfolioBtn.noWorks')}</p>

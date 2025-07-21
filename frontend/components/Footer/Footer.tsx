@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Text from "../Text/Text";
+
 const Footer = () => {
   return (
     <footer className="text-white-custom text-sm relative z-10 flex items-center justify-between py-3 px-5 md:p-4 bg-[#1c202d] text-gray-400 w-full mt-auto 3xl:py-3 xl:px-12 2xl:px-0 xl:py-4">

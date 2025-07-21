@@ -54,7 +54,7 @@ export default function QuestionsPage({
 
 	return (
 		<Layout>
-			<div className='flex flex-col xl:flex-row xl:mt-[-12px] h-screen-minus-195 w-full overflow-hidden'>
+			<div className='flex flex-col xl:flex-row xl:mt-[-12px] h-screen-minus-195 pb-3 w-full overflow-hidden'>
 				<div className='md:w-1/2 space-y-6 xl:flex-center 2xl:ml-[-100px]'>
 					<MainMenu
 						isMobileMenuOpen={isMobileMenuOpen}
