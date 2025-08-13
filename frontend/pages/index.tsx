@@ -2,7 +2,7 @@ import Layout from '@/components/Layout/Layout';
 import Text from '@/components/Text/Text';
 import MainMenu from '@/components/MainMenu/MainMenu';
 import { useState } from 'react';
-import Image from 'next/image';
+// import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
@@ -43,7 +43,7 @@ export default function Home() {
 				</div>
 			</div>
 
-			<div
+			{/* <div
 				className={`absolute bottom-[6vh] left-0  xl:left-auto xl:right-[calc(50%-600px)] w-full flex justify-center xl:justify-end z-0 `}
 			>
 				<Image
@@ -77,7 +77,7 @@ export default function Home() {
 					width={600}
 					height={800}
 				/>
-			</div>
+			</div> */}
 		</Layout>
 	);
 }

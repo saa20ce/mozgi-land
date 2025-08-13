@@ -3,6 +3,7 @@ import MainMenu from '../MainMenu/MainMenu';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { LogoIcon } from '../Logo/LogoIcon';
 
 const Header = () => {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -18,9 +19,7 @@ const Header = () => {
 		<header className='flex items-center justify-between p-5 bg-[#F6F6F633] w-full h-[64px] rounded-full text-white-custom'>
 			<div className='flex items-center space-x-3'>
 				<Link href='/' locale={router.locale}>
-					<div className=' bg-[#F26666] rounded-full px-5 py-[6px] font-medium min-w-[94px] text-xl'>
-						LOGO
-					</div>
+					<LogoIcon className='h-[44px] w-[44px]' />
 				</Link>
 			</div>
 			<div className='flex-center gap-2'>

@@ -44,7 +44,6 @@ export default function AdminLogin() {
 					text={'Войти'}
 					active
 					type='feedback'
-					onClick={handleSubmit}
 					className='mt-[18px] xl:mt-[24px]'
 				/>
 			</form>
